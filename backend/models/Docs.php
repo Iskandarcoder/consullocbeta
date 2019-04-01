@@ -61,7 +61,6 @@ class Docs extends \yii\db\ActiveRecord
      */
     public $file;
 
-    public $verifyCode;
 
     public static function tableName()
     {
@@ -84,6 +83,7 @@ class Docs extends \yii\db\ActiveRecord
             [['guide'], 'string', 'max' => 35],
 
             [['comment'], 'string', 'max' => 200],
+            ['verifyCode', 'captcha'],
         ];
     }
 
@@ -139,6 +139,7 @@ class Docs extends \yii\db\ActiveRecord
             'division_id' => Yii::t('app','Elchixona'),
             'status_id' => Yii::t('app','Holati'),
             'comment' => Yii::t('app','Izoh'),
+            'verifyCode' => 'Verification Code',
         ];
     }
 
@@ -169,9 +170,9 @@ class Docs extends \yii\db\ActiveRecord
     //     return $this->hasOne(SpCountry::className(), ['sp_id' => 'citizenship_id']);
     // }
 
-     public function getSpDoc_type()
+     public function getSpDoctypeIstreb()
     {
-        return $this->hasOne(SpDoc_type::className(), ['sp_id' => 'type_id']);
+        return $this->hasOne(SpDoctypeIstreb::className(), ['sp_id' => 'type_id']);
     }
 
     public function getNation()

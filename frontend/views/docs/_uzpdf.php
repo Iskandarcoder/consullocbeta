@@ -127,7 +127,7 @@
 			- agar nafaqa to`g`risidagi hujjat talab qilinayotgan bo`lsa,<br> qachon, nima uchun va qaysi tashkilot nafaqani ajratganligi<br> haqida ma'lumot bering, qaysi tashkilot qachon oxirgi<br> to`lovni bajargan. 
 			</td>
 			<td style="border: 1px solid black; padding:5px;">
-				<?=$model->spDoc_type->sp_name_uz;?>:<br>
+				<?=$model->spDoctypeIstreb->sp_name_uz;?>:<br>
 				<?=$model->type_place;?> <?=$model->type_date;?><br> 
 				<?=$model->fio_father;?><br><?=$model->fio_mother;?> 
 				<?=$model->study_name;?><br><?=$model->study_place;?> <br>
