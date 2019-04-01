@@ -44,7 +44,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 // ],
                 [
                     'attribute' => 'type_id',
-                    'value' => 'SpDoctypeIstreb.sp_name_'.Yii::$app->language,
+                    'value' => 'spDoctypeIstreb.sp_name_'.Yii::$app->language,
                 ],
                 // 'type_place',
                 // 'type_date',

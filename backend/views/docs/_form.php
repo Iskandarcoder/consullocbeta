@@ -12,6 +12,8 @@ use backend\models\SpDoctypeIstreb;
 use backend\models\SpDivisionyii;  
 use backend\models\Docsstatus;
 use backend\models\Status;
+use yii\captcha\Captcha;
+
 
 /* @var $this yii\web\View */
 /* @var $model backend\models\Docs */

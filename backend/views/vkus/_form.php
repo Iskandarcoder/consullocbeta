@@ -616,7 +616,7 @@ $('#vkus-education').change(function()
             }
 });
 
- 
+
 
 
 })");
