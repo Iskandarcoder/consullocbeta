@@ -57,7 +57,7 @@ class PmjController extends BaseController
     {
         $searchModel = new PmjSearch();
 
-        if(Yii::$app->user->identity->role_id != '1'){
+        if(Yii::$app->user->identity->role_id != '3'){
 
         $params = Yii::$app->request->queryParams;
         $division = Yii::$app->user->identity->dvision_id;

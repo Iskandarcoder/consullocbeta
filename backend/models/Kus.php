@@ -63,7 +63,6 @@ class Kus extends \yii\db\ActiveRecord
     /**
      * @inheritdoc
      */
-    public $verifyCode;
     // public $wed_name;
     // public $education;
     // public $education_date;
@@ -98,7 +97,6 @@ class Kus extends \yii\db\ActiveRecord
             [['status'], 'string', 'max' => 1],
             // [['adinfo'], 'string', 'max' => 1024],
             [['which_school'], 'string', 'max' => 255],
-            ['verifyCode', 'captcha'],
         ];
     }
 

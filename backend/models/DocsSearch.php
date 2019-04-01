@@ -18,8 +18,8 @@ class DocsSearch extends Docs
     public function rules()
     {
         return [
-            [['id', 'nation_id', 'type_id', 'status_id', 'division_id'], 'integer'],
-            [['surname', 'name', 'mname', 'pre_surname', 'pre_name', 'pre_mname', 'birth_date', 'birth_place', 'citizenship_id', 'type_place', 'type_date', 'fio_father', 'fio_mother', 'study_name', 'study_place', 'study_start_date', 'study_end_date', 'pension_reason', 'pension_date', 'pension_org', 'last_cost', 'last_cost_org', 'doc_target', 'living_place', 'tel', 'fax', 'sec_name', 'sec_surname', 'sec_mname', 'sec_birthplace', 'sec_birthdate', 'sec_citizenship_id', 'relative', 'sec_livingplace', 'sec_tel', 'sec_fax', 'scan_file', 'pre_citizenship_id', 'email', 'comment'], 'safe'],
+            [['id', 'nation_id', 'status_id', 'division_id'], 'integer'],
+            [['surname', 'name', 'mname', 'pre_surname', 'pre_name', 'pre_mname', 'birth_date', 'birth_place', 'citizenship_id', 'type_place', 'type_date', 'fio_father', 'fio_mother', 'study_name', 'study_place', 'study_start_date', 'type_id', 'study_end_date', 'pension_reason', 'pension_date', 'pension_org', 'last_cost', 'last_cost_org', 'doc_target', 'living_place', 'tel', 'fax', 'sec_name', 'sec_surname', 'sec_mname', 'sec_birthplace', 'sec_birthdate', 'sec_citizenship_id', 'relative', 'sec_livingplace', 'sec_tel', 'sec_fax', 'scan_file', 'pre_citizenship_id', 'email', 'comment'], 'safe'],
         ];
     }
 
@@ -57,12 +57,14 @@ class DocsSearch extends Docs
             return $dataProvider;
         }
 
+        $query->joinWith('spDoctypeIstreb');
+        $query->joinWith('citizenship');
+
+
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
             'birth_date' => $this->birth_date,
-            'nation_id' => $this->nation_id,
-            'type_id' => $this->type_id,
             'type_date' => $this->type_date,
             'study_start_date' => $this->study_start_date,
             'study_end_date' => $this->study_end_date,
@@ -74,12 +76,13 @@ class DocsSearch extends Docs
 
         $query->andFilterWhere(['like', 'surname', $this->surname])
             ->andFilterWhere(['like', 'name', $this->name])
+            ->andFilterWhere(['like', 'sp_countryyii.sp_name_ru', $this->citizenship_id])
+            ->andFilterWhere(['like', 'sp_doctype_istreb.sp_name_ru', $this->type_id])
             ->andFilterWhere(['like', 'mname', $this->mname])
             ->andFilterWhere(['like', 'pre_surname', $this->pre_surname])
             ->andFilterWhere(['like', 'pre_name', $this->pre_name])
             ->andFilterWhere(['like', 'pre_mname', $this->pre_mname])
             ->andFilterWhere(['like', 'birth_place', $this->birth_place])
-            ->andFilterWhere(['like', 'citizenship_id', $this->citizenship_id])
             ->andFilterWhere(['like', 'type_place', $this->type_place])
             ->andFilterWhere(['like', 'fio_father', $this->fio_father])
             ->andFilterWhere(['like', 'fio_mother', $this->fio_mother])

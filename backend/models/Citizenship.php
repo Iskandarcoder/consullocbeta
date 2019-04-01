@@ -59,7 +59,7 @@ class Citizenship extends \yii\db\ActiveRecord
      * {@inheritdoc}
      */
 
-    public $verifyCode;
+    
 
         public $file;
         public $photo1;
@@ -83,7 +83,6 @@ class Citizenship extends \yii\db\ActiveRecord
             [['marital_place', 'last_place', 'cause', 'living_place'], 'string', 'max' => 200],
             [['court', 'army', 'army_now', 'pmj', 'visit_uzb', 'business', 'comment'], 'string', 'max' => 500],
             [['medal'], 'string', 'max' => 100],
-            ['verifyCode', 'captcha'],            
         ];
     }
 

@@ -61,7 +61,6 @@ class Docs extends \yii\db\ActiveRecord
      */
     public $file;
 
-    public $verifyCode;
 
     public static function tableName()
     {

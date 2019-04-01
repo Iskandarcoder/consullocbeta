@@ -3,7 +3,7 @@
 namespace frontend\controllers;
 
 use Yii;
-use backend\models\Kus;
+use frontend\models\Kus;
 use frontend\models\KusSearch;
 //use yii\web\Controller;
 use frontend\components\BaseController;
