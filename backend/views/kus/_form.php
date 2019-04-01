@@ -5,16 +5,16 @@ use yii\widgets\ActiveForm;
 use kartik\date\DatePicker;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Url;
-use backend\models\SpCountry;
+use backend\models\SpCountryyii;
 use kartik\select2\Select2;
-use backend\models\SpRegion;
-use backend\models\SpDistrict;
-use backend\models\SpPlace;
-use backend\models\SpNation;
-use backend\models\SpDoctype;
-use backend\models\SpDivision;
+use backend\models\SpRegionyii;
+use backend\models\SpDistrictyii;
+use backend\models\SpPlaceyii;
+use backend\models\SpNationyii;
+use backend\models\SpDoctypeyii;
+use backend\models\SpDivisionyii;
 use backend\models\VkuKart;
-use backend\models\SpStreet;
+use backend\models\SpStreetyii;
 use backend\models\Education;
 use backend\models\TypeRelative;
 use yii\captcha\Captcha;
@@ -27,50 +27,50 @@ use wbraganca\dynamicform\DynamicFormWidget;
 /* @var $form yii\widgets\ActiveForm */
 $lang = Yii::$app->language;
 $country = [];
-$nation =  SpNation::find()->orderBy(new \yii\db\Expression('if(sp_id=44, 0, 1)'))->all();
+$nation =  SpNationyii::find()->orderBy(new \yii\db\Expression('if(sp_id=44, 0, 1)'))->all();
 $nation =  ArrayHelper::map($nation, 'sp_id','sp_name_'.Yii::$app->language);
 
 $living_regions = [];
   $country = [];
-  $country = SpCountry::find()->orderBy(new \yii\db\Expression('if(id=182, 0, 1)'))->all();
+  $country = SpCountryyii::find()->orderBy(new \yii\db\Expression('if(id=182, 0, 1)'))->all();
   $country = ArrayHelper::map($country, 'sp_id','sp_name_'.Yii::$app->language);
-  $living_regions = SpRegion::find()->all();
+  $living_regions = SpRegionyii::find()->all();
   $living_regions = ArrayHelper::map($living_regions, 'sp_id','sp_name_'.Yii::$app->language);
 
 $spregion = [];
 if ($model->birth_country_id) {
-  $spregion = SpRegion::find()->where(['sp_country_id' => $model->birth_country_id])->asArray()->all();
+  $spregion = SpRegionyii::find()->where(['sp_country_id' => $model->birth_country_id])->asArray()->all();
 }
 
 $spdistrict = [];
 if ($model->birth_region_id) {
-  $spdistrict = SpDistrict::find()->where(['sp_region' => $model->birth_region_id])->asArray()->all();
+  $spdistrict = SpDistrictyii::find()->where(['sp_region' => $model->birth_region_id])->asArray()->all();
 }
 
 $spplace = [];
 if ($model->birth_place_id) {
-  $spplace = SpPlace::find()->where(['sp_district' => $model->birth_place_id])->asArray()->all();
+  $spplace = SpPlaceyii::find()->where(['sp_district' => $model->birth_place_id])->asArray()->all();
 }
 
 $street = [];
 if ($model->living_street_id) {
-  $street = SpStreet::find()->where(['sp_place' => $model->living_street_id])->asArray()->all();
+  $street = SpStreetyii::find()->where(['sp_place' => $model->living_street_id])->asArray()->all();
 }
 
 
 $spdistrict_living = [];
 if ($model->living_region_id) {
-  $spdistrict_living = SpDistrict::find()->where(['sp_region' => $model->living_region_id])->asArray()->all();
+  $spdistrict_living = SpDistrictyii::find()->where(['sp_region' => $model->living_region_id])->asArray()->all();
 }
 
 $spplace_living = [];
 if ($model->living_place_id) {
-  $spplace_living = SpPlace::find()->where(['sp_district' => $model->living_place_id])->asArray()->all();
+  $spplace_living = SpPlaceyii::find()->where(['sp_district' => $model->living_place_id])->asArray()->all();
 }
 
 $street_living = [];
 if ($model->living_street_id) {
-  $street_living = SpStreet::find()->where(['sp_district' => $model->living_street_id])->asArray()->all();
+  $street_living = SpStreetyii::find()->where(['sp_district' => $model->living_street_id])->asArray()->all();
 }
 
 if(Yii::$app->language =='ru'){
@@ -169,7 +169,7 @@ $status = [
     <div class="row">
       <div class="col-md-8">
         <?= $form->field($model, 'division_id')->widget(Select2::classname(), [
-                          'data' => ArrayHelper::map(SpDivision::find()->where(['sp_idfirst' => 1])->all(), 'sp_id', 'sp_name_uz'),
+                          'data' => ArrayHelper::map(SpDivisionyii::find()->where(['sp_idfirst' => 1])->all(), 'sp_id', 'sp_name_uz'),
                           'language' => 'ru',
                           'options' => ['placeholder' => 'Выберите Вид ...'],
                           'pluginOptions' => [
@@ -287,7 +287,7 @@ $status = [
         </div>
         <div class="col-md-6">
             <?=$form->field($model, 'document_type_id')->widget(Select2::classname(), [
-                          'data' => ArrayHelper::map(SpDoctype::find()->all(), 'sp_id', 'sp_name_'.Yii::$app->language),
+                          'data' => ArrayHelper::map(SpDoctypeyii::find()->all(), 'sp_id', 'sp_name_'.Yii::$app->language),
                           'language' => 'ru',
                           'options' => ['placeholder' => 'Выберите Вид ...'],
                           'pluginOptions' => [
@@ -335,7 +335,7 @@ $status = [
       <div class="row">
         <div class="col-md-6">
             <?=$form->field($model, 'document_div_id')->widget(Select2::classname(), [
-                          'data' => ArrayHelper::map(SpDivision::find()->all(), 'sp_id', 'sp_name_'.Yii::$app->language),
+                          'data' => ArrayHelper::map(SpDivisionyii::find()->all(), 'sp_id', 'sp_name_'.Yii::$app->language),
                           'language' => 'ru',
                           'options' => ['placeholder' => 'Выберите Вид ...'],
                           'pluginOptions' => [

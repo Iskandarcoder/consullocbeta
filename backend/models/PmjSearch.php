@@ -10,6 +10,7 @@ use backend\models\Pmj;
 /**
  * PmjSearch represents the model behind the search form about `backend\models\Pmj`.
  */
+$lang = Yii::$app->language;
 
 class PmjSearch extends Pmj
 {
@@ -19,8 +20,8 @@ class PmjSearch extends Pmj
     public function rules()
     {
         return [
-            [['id', 'nationality_id', 'tel', 'citizenship_id', 'second_cityzenship_id', 'numb_pasp', 'status_id', 'division_id'], 'integer'],
-            [['surname', 'name', 'mname', 'pre_surname', 'pre_name', 'pre_mname', 'photo', 'photo1', 'photo2', 'photo3', 'birth_date', 'birth_place', 'living_place', 'seria_pasp', 'pasp_date', 'pasp_place', 'reason', 'security', 'law_court', 'criminal', 'army', 'guide'], 'safe'],
+            [['id', 'tel', 'citizenship_id', 'second_cityzenship_id', 'numb_pasp', 'division_id'], 'integer'],
+            [['surname', 'name', 'mname', 'pre_surname', 'pre_name', 'pre_mname', 'photo', 'photo1', 'photo2', 'photo3', 'birth_date', 'birth_place', 'living_place', 'seria_pasp', 'pasp_date', 'pasp_place', 'reason', 'security', 'law_court', 'criminal', 'nationality_id', 'status_id', 'army', 'guide'], 'safe'],
         ];
     }
 
@@ -67,22 +68,31 @@ class PmjSearch extends Pmj
             return $dataProvider;
         }
 
+
+        $query->joinWith('spNation');
+        $query->joinWith('status');
+
+
+
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'nationality_id' => $this->nationality_id,
             'birth_date' => $this->birth_date,
             'tel' => $this->tel,
             'citizenship_id' => $this->citizenship_id,
             'second_cityzenship_id' => $this->second_cityzenship_id,
             'numb_pasp' => $this->numb_pasp,
             'pasp_date' => $this->pasp_date,
-            'status_id' => $this->status_id,
             'division_id' => $this->division_id,
         ]);
 
+        
+
+
         $query->andFilterWhere(['like', 'surname', $this->surname])
             ->andFilterWhere(['like', 'name', $this->name])
+            ->andFilterWhere(['like', 'sp_nationyii.sp_name_ru', $this->nationality_id])
+            ->andFilterWhere(['like', 'status.name_ru', $this->status_id])
             ->andFilterWhere(['like', 'guide', $this->guide])
             ->andFilterWhere(['like', 'mname', $this->mname])
             ->andFilterWhere(['like', 'pre_surname', $this->pre_surname])

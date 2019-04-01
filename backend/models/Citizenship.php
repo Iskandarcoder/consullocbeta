@@ -83,6 +83,7 @@ class Citizenship extends \yii\db\ActiveRecord
             [['marital_place', 'last_place', 'cause', 'living_place'], 'string', 'max' => 200],
             [['court', 'army', 'army_now', 'pmj', 'visit_uzb', 'business', 'comment'], 'string', 'max' => 500],
             [['medal'], 'string', 'max' => 100],
+            ['verifyCode', 'captcha'],            
         ];
     }
 
@@ -132,6 +133,7 @@ class Citizenship extends \yii\db\ActiveRecord
             'comment' => Yii::t('app', 'Sharh'), 
             'division_id' => Yii::t('app', 'Diplomatik vakolatxonalar'), 
             'file' => Yii::t('app', 'Rasm'),
+            'verifyCode' => Yii::t('app', 'Kodni tekshiring'),            
         ];
     }
 

@@ -38,7 +38,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 // 'photo1:ntext',
                 // 'photo2:ntext',
                 // 'photo3:ntext',
-                // 'birth_date',
+                 'birth_date',
                 // 'birth_place',
                 // 'living_place',
                 // 'tel',

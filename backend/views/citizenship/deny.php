@@ -29,15 +29,15 @@ $this->params['breadcrumbs'][] = $this->title;
                 'surname',
                 'name',
                 'mname',
-                 [
+                'birth_date',
+                [
                         'attribute' => 'nationality_id',
                         'value' => 'spNation.sp_name_ru',
                     ],
                 //'pre_surname',
                 //'pre_name',
                 //'pre_mname',
-                //'social_status',
-                //'birth_date',
+                //'social_status',                
                 //'nationality_id',
                 //'study_id',
                 //'profession',
