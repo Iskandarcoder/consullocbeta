@@ -50,7 +50,7 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'pre_citizenship_id',
             [
                     'label' => Yii::t('app', 'Talab qilinayotgan hujjat turi'),
-                    'value' => $model->spDoc_type->sp_name_uz,
+                    'value' => $model->spDoctypeIstreb->sp_name_uz,
             ],
             // 'type_id',
             'type_place',

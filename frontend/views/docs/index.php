@@ -8,7 +8,7 @@ use yii\helpers\Url;
 /* @var $searchModel frontend\models\KusSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Kuses';
+$this->title = 'Docs';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="kus-index">

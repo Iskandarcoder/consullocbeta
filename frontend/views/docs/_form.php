@@ -8,7 +8,7 @@ use kartik\select2\Select2;
 use yii\helpers\ArrayHelper;
 use backend\models\SpNationyii;
 use backend\models\SpCountryyii;
-use backend\models\SpDoc_type;
+use backend\models\SpDoctypeIstreb;
 use backend\models\SpDivisionyii; 
 use yii\captcha\Captcha;
  
@@ -240,7 +240,7 @@ use yii\captcha\Captcha;
                          </div>
                        </div>
                             <?= $form->field($model, 'type_id')->widget(Select2::classname(), [
-                          'data' => ArrayHelper::map(SpDoc_type::find()->all(), 'sp_id', 'sp_name_'.Yii::$app->language),
+                          'data' => ArrayHelper::map(SpDoctypeIstreb::find()->all(), 'sp_id', 'sp_name_'.Yii::$app->language),
                          // 'language' => 'ru',
                           'options' => ['placeholder' => Yii::t('app', 'Hujjatni tanlang...')],
                           'pluginOptions' => [
