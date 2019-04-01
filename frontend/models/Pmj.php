@@ -1,26 +1,34 @@
 <?php
 
-namespace backend\models;
+namespace frontend\models;
 
 use Yii;
 
 /**
  * This is the model class for table "pmj".
  *
+ * @property int $id
+ * @property string $guide
  * @property string $surname
  * @property string $name
+ * @property string $mname
  * @property string $pre_surname
  * @property string $pre_name
  * @property string $pre_mname
  * @property int $nationality_id
+ * @property string $mail
+ * @property string $photo
+ * @property string $photo1
+ * @property string $photo2
+ * @property string $photo3
  * @property string $birth_date
  * @property string $birth_place
  * @property string $living_place
- * @property int $tel
+ * @property string $tel
  * @property int $citizenship_id
  * @property int $second_cityzenship_id
  * @property string $seria_pasp
- * @property int $numb_pasp
+ * @property string $numb_pasp
  * @property string $pasp_date
  * @property string $pasp_place
  * @property string $reason
@@ -28,29 +36,28 @@ use Yii;
  * @property string $law_court
  * @property string $criminal
  * @property string $army
- * @property int $id
  * @property int $status_id
+ * @property string $comment
+ * @property int $division_id
  */
-class Pmj extends \yii\db\ActiveRecord
+
+class Pmj extends \backend\models\Pmj
 {
     /**
      * {@inheritdoc}
      */
-        
-        public $file;
-        public $file1;
-        public $file2;
-        public $file3;
-
+    public $verifyCode;
+    
     public static function tableName()
     {
         return 'pmj';
     }
 
+
     /**
      * {@inheritdoc}
      */
-    public function rules()
+     public function rules()
     {
         return [
             [['surname', 'name', 'mname', 'nationality_id', 'birth_date', 'birth_place', 'living_place', 'tel', 'citizenship_id', 'seria_pasp', 'numb_pasp', 'pasp_date', 'pasp_place', 'reason', 'security', 'law_court', 'criminal', 'army','division_id'], 'required'],
@@ -63,15 +70,15 @@ class Pmj extends \yii\db\ActiveRecord
             [['guide'], 'string', 'max' => 35],
             [['comment'], 'string', 'max' => 500],
             [['reason', 'security', 'law_court', 'criminal', 'army', 'photo', 'photo1', 'photo2', 'photo3'], 'string', 'max' => 500],
-            [['file','file1','file2','file3'],'file'],            
+            [['file','file1','file2','file3'],'file'],
+            ['verifyCode', 'captcha'],            
         ];
     }
-
 
     /**
      * {@inheritdoc}
      */
-    public function attributeLabels()
+   public function attributeLabels()
     {
         return [
             'surname' => Yii::t('app', 'Familiya'),
@@ -107,57 +114,5 @@ class Pmj extends \yii\db\ActiveRecord
             'guide' =>  Yii::t('app', 'Guide'), 
             'verifyCode' => Yii::t('app', 'Kodni tekshiring'),   
         ];
-    }
-
-
-     public function setRandomString($length = 32)
-    {
-        $characters = '123456789ABCDEFGHJKLMNPQRSTUVWXYZ';
-        $charactersLength = strlen($characters);
-        $randomString = '';
-        for ($i = 0; $i < $length; $i++) {
-            $randomString .= $characters[rand(0, $charactersLength - 1)];
-        }
-        $this->guide = $randomString;
-    }
-
-    public function getTeenager()
-    {
-        return $this->hasMany(Teenager::className(), ['pmj_id' => 'id']);
-    }
-
-    public function getEmployment()
-    {
-        return $this->hasMany(Employment::className(), ['pmj_id' => 'id']);
-    }
-
-    public function getRelative()
-    {
-        return $this->hasMany(Relative::className(), ['pmj_id' => 'id']);
-    }
-
-     public function getSpNation()
-    {
-        return $this->hasOne(SpNationyii::className(), ['sp_id' => 'nationality_id']);
-    }
-
-     public function getSpCountry()
-    {
-        return $this->hasOne(SpCountryyii::className(), ['sp_id' => 'citizenship_id']);
-    }
-
-     public function getSpCountry2()
-    {
-        return $this->hasOne(SpCountryyii::className(), ['sp_id' => 'second_cityzenship_id']);
-    }
-
-     public function getStatus()
-    {
-        return $this->hasOne(Status::className(), ['id' => 'status_id']);
-    }
-
-     public function getSpDivision()
-    {
-        return $this->hasOne(SpDivisionyii::className(), ['sp_id' => 'division_id']);
     }
 }

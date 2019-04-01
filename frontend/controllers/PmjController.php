@@ -3,7 +3,7 @@
 namespace frontend\controllers;
 
 use Yii;
-use backend\models\Pmj;
+use frontend\models\Pmj;
 use frontend\models\PmjSearch;
 //use yii\web\Controller;
 use frontend\components\BaseController;

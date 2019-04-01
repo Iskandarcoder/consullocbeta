@@ -1,13 +1,13 @@
 <?php
 
-namespace backend\models;
+namespace frontend\models;
 
 use Yii;
 
 /**
  * This is the model class for table "docs".
  *
- * @property integer $id
+ * @property int $id
  * @property string $guide
  * @property string $surname
  * @property string $name
@@ -17,9 +17,9 @@ use Yii;
  * @property string $pre_mname
  * @property string $birth_date
  * @property string $birth_place
- * @property integer $nation_id
- * @property string $citizenship_id
- * @property integer $type_id
+ * @property int $nation_id
+ * @property int $citizenship_id
+ * @property int $type_id
  * @property string $type_place
  * @property string $type_date
  * @property string $fio_father
@@ -35,31 +35,32 @@ use Yii;
  * @property string $last_cost_org
  * @property string $doc_target
  * @property string $living_place
- * @property integer $tel
- * @property integer $fax
+ * @property string $tel
+ * @property string $fax
  * @property string $sec_name
  * @property string $sec_surname
  * @property string $sec_mname
  * @property string $sec_birthplace
  * @property string $sec_birthdate
- * @property string $sec_citizenship_id
+ * @property int $sec_citizenship_id
  * @property string $relative
  * @property string $sec_livingplace
- * @property integer $sec_tel
- * @property integer $sec_fax
+ * @property string $sec_tel
+ * @property string $sec_fax
  * @property string $scan_file
- * @property integer $status_id
- * @property string $pre_citizenship_id
- * @property string $comment
- * @property integer $division_id
+ * @property int $status_id
+ * @property int $pre_citizenship_id
  * @property string $email
+ * @property int $division_id
+ * @property string $comment
  */
-class Docs extends \yii\db\ActiveRecord
+
+class Docs extends \backend\models\Docs
 {
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
-    public $file;
+    public $verifyCode;
 
 
     public static function tableName()
@@ -68,26 +69,26 @@ class Docs extends \yii\db\ActiveRecord
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function rules()
-    {     //'type_place', 'type_date',
+    {
         return [
-            [['surname', 'name', 'mname', 'birth_date', 'birth_place', 'nation_id', 'citizenship_id', 'type_id',  'doc_target', 'living_place', 'tel', 'scan_file', 'division_id', 'email', ], 'required'],
-            [['birth_date', 'type_date', 'study_start_date', 'study_end_date', 'citizenship_id', 'pre_citizenship_id', 'sec_citizenship_id', 'pension_date', 'sec_birthdate'], 'safe'],
-            [['nation_id', 'type_id', 'sec_tel', 'sec_fax', 'status_id', 'division_id' ], 'integer'],
+            [['guide', 'surname', 'name', 'mname', 'pre_surname', 'pre_name', 'pre_mname', 'birth_date', 'birth_place', 'nation_id', 'citizenship_id', 'type_id', 'type_place', 'fio_father', 'fio_mother', 'study_name', 'study_place', 'pension_reason', 'pension_org', 'last_cost', 'last_cost_org', 'doc_target', 'living_place', 'tel', 'fax', 'sec_name', 'sec_surname', 'sec_mname', 'sec_birthplace', 'relative', 'sec_livingplace', 'scan_file', 'email', 'division_id', 'comment'], 'required'],
+            [['birth_date', 'type_date', 'study_start_date', 'study_end_date', 'pension_date', 'sec_birthdate'], 'safe'],
+            [['nation_id', 'citizenship_id', 'type_id', 'sec_citizenship_id', 'status_id', 'pre_citizenship_id', 'division_id'], 'integer'],
             [['scan_file'], 'string'],
-            [['file'], 'file'],
-            [['surname', 'name', 'mname', 'pre_surname', 'pre_name', 'pre_mname', 'fio_father', 'fio_mother', 'study_name', 'pension_reason', 'pension_org', 'last_cost', 'last_cost_org', 'doc_target', 'sec_name', 'sec_surname', 'sec_mname', 'relative', 'email', 'tel', 'fax'], 'string', 'max' => 50],
-            [['birth_place', 'type_place', 'study_place', 'living_place', 'sec_birthplace', 'sec_livingplace'], 'string', 'max' => 100],
             [['guide'], 'string', 'max' => 35],
-
+            [['surname', 'name', 'mname', 'pre_surname', 'pre_name', 'pre_mname', 'fio_father', 'fio_mother', 'study_name', 'pension_reason', 'pension_org', 'last_cost', 'last_cost_org', 'doc_target', 'tel', 'fax', 'sec_name', 'sec_surname', 'sec_mname', 'relative', 'sec_tel', 'sec_fax', 'email'], 'string', 'max' => 50],
+            [['birth_place', 'type_place', 'study_place', 'living_place', 'sec_birthplace', 'sec_livingplace'], 'string', 'max' => 100],
             [['comment'], 'string', 'max' => 200],
+            ['verifyCode', 'captcha'], 
+
         ];
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function attributeLabels()
     {
@@ -138,75 +139,8 @@ class Docs extends \yii\db\ActiveRecord
             'division_id' => Yii::t('app','Elchixona'),
             'status_id' => Yii::t('app','Holati'),
             'comment' => Yii::t('app','Izoh'),
+            'verifyCode' => Yii::t('app', 'Kodni tekshiring'),  
         ];
+                      
     }
-
-
-    public function setRandomString($length = 32)
-
-    {
-
-        $characters = 'ABCDEFGHJKLMNPQRSTUVWXYZ123456789';
-
-        $charactersLength = strlen($characters);
-
-        $randomString = '';
-
-        for ($i = 0; $i < $length; $i++) {
-
-            $randomString .= $characters[rand(0, $charactersLength - 1)];
-
-        }
-
-        $this->guide = $randomString;
-
-    }
-
-
-    //  public function getCountry()
-    // {
-    //     return $this->hasOne(SpCountry::className(), ['sp_id' => 'citizenship_id']);
-    // }
-
-     public function getSpDoc_type()
-    {
-        return $this->hasOne(SpDoc_type::className(), ['sp_id' => 'type_id']);
-    }
-
-    public function getNation()
-    {
-        return $this->hasOne(SpNationyii::className(), ['sp_id' => 'nation_id']);
-    }
-
-         public function getDocsStatus()
-    {
-        return $this->hasOne(DocsStatus::className(), ['id' => 'division_id']);
-    }
-
-    public function getSpNation()
-    {
-        return $this->hasOne(SpNationyii::className(), ['sp_id' => 'nation_id']);
-    }
-
-    public function getSpDivision()
-    {
-        return $this->hasOne(SpDivisionyii::className(), ['sp_id' => 'nation_id']);
-    }
-
-     public function getCitizenship()
-    {
-        return $this->hasOne(SpCountryyii::className(), ['sp_id' => 'citizenship_id']);
-    }
-
-     public function getCitizenship2()
-    {
-        return $this->hasOne(SpCountryyii::className(), ['sp_id' => 'pre_citizenship_id']);
-    }
-
-     public function getCitizenship3()
-    {
-        return $this->hasOne(SpCountryyii::className(), ['sp_id' => 'sec_citizenship_id']);
-    }
-
-
 }

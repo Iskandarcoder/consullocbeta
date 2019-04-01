@@ -3,7 +3,7 @@
 namespace frontend\controllers;
 
 use Yii;
-use backend\models\Citizenship;
+use frontend\models\Citizenship;
 use frontend\models\CitizenshipSearch;
 //use yii\web\Controller;
 use frontend\components\BaseController;

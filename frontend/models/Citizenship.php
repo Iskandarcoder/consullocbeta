@@ -1,6 +1,6 @@
 <?php
 
-namespace backend\models;
+namespace frontend\models;
 
 use Yii;
 
@@ -9,16 +9,19 @@ use Yii;
  *
  * @property int $id
  * @property string $guide
+ * @property string $photo
  * @property string $surname
  * @property string $name
  * @property string $mname
  * @property string $pre_surname
+ * @property string $mail
  * @property string $pre_name
  * @property string $pre_mname
+ * @property string $social_status
  * @property string $birth_date
  * @property int $nationality_id
  * @property int $study_id
- * @property int $profession
+ * @property string $profession
  * @property int $marital_id
  * @property string $marital_name
  * @property string $marital_bdate
@@ -45,7 +48,7 @@ use Yii;
  * @property int $division_id
  */
 
-class Citizenship extends \yii\db\ActiveRecord
+class Citizenship extends \backend\models\Citizenship
 {
     /**
      * {@inheritdoc}
@@ -55,20 +58,11 @@ class Citizenship extends \yii\db\ActiveRecord
         return 'citizenship';
     }
 
+    public $verifyCode;
+
     /**
      * {@inheritdoc}
      */
-
-    
-
-        public $file;
-        public $photo1;
-        public $photo2;
-        public $photo3;
-        public $photo4;
-
-
-
     public function rules()
     {
         return [
@@ -83,9 +77,9 @@ class Citizenship extends \yii\db\ActiveRecord
             [['marital_place', 'last_place', 'cause', 'living_place'], 'string', 'max' => 200],
             [['court', 'army', 'army_now', 'pmj', 'visit_uzb', 'business', 'comment'], 'string', 'max' => 500],
             [['medal'], 'string', 'max' => 100],
+            ['verifyCode', 'captcha'], 
         ];
     }
-
 
     /**
      * {@inheritdoc}
@@ -134,71 +128,5 @@ class Citizenship extends \yii\db\ActiveRecord
             'file' => Yii::t('app', 'Rasm'),
             'verifyCode' => Yii::t('app', 'Kodni tekshiring'),            
         ];
-    }
-
-    public function setRandomString($length = 32)
-    {
-        $characters = '123456789ABCDEFGHJKLMNPQRSTUVWXYZ';
-        $charactersLength = strlen($characters);
-        $randomString = '';
-        for ($i = 0; $i < $length; $i++) {
-            $randomString .= $characters[rand(0, $charactersLength - 1)];
-        }
-        $this->guide = $randomString;
-    }
-
-     public function getInrelative()
-    {
-        return $this->hasMany(InrelativePmj::className(), ['citizenship_id' => 'id']);
-    }
-
-    public function getOutrelative()
-    {
-        return $this->hasMany(OutrelativePmj::className(), ['citizenship_id' => 'id']);
-    }
-
-    public function getChildren()
-    {
-        return $this->hasMany(Children::className(), ['citizenship_id' => 'id']);
-    }
-
-     public function getSpNation()
-    {
-        return $this->hasOne(SpNationyii::className(), ['sp_id' => 'nationality_id']);
-    }
-
-     public function getSpCountry()
-    {
-        return $this->hasOne(SpCountryyii::className(), ['sp_id' => 'citizenship_id']);
-    }
-
-     public function getSpCountry2()
-    {
-        return $this->hasOne(SpCountryyii::className(), ['sp_id' => 'second_cityzenship_id']);
-    }
-
-     public function getStatus()
-    {
-        return $this->hasOne(Status::className(), ['id' => 'status_id']);
-    }
-
-     public function getSpDivision()
-    {
-        return $this->hasOne(SpDivisionyii::className(), ['sp_id' => 'division_id']);
-    }
-
-    public function getEducation()
-    {
-        return $this->hasOne(Education::className(), ['id' => 'study_id']);
-    }
-
-    public function getSpMarital()
-    {
-        return $this->hasOne(SpMaritalyii::className(), ['id' => 'marital_id']);
-    }
-
-    public function getTypeRelative()
-    {
-        return $this->hasOne(TypeRelative::className(), ['id' => 'relative']);
     }
 }
