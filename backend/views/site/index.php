@@ -47,14 +47,16 @@ use backend\models\Docs;
 
 //Jarayondagi arizalar soni
     $proces = Pmj::find()
-    ->Where(['>', 'status_id','0'])
-    ->andWhere(['<', 'status_id','6'])
+    ->Where(['!=','status_id', '0'])
+    ->andWhere(['!=','status_id', '4'])
+    ->andWhere(['!=','status_id', '6'])
     ->andWhere(['division_id' => $division])
     ->all();
 
      $cityzenship_proces = Citizenship::find()
-    ->Where(['>', 'status_id','0'])
-    ->andWhere(['<', 'status_id','6'])
+    ->Where(['!=','status_id', '0'])
+    ->andWhere(['!=','status_id', '4'])
+    ->andWhere(['!=','status_id', '6'])
     ->andWhere(['division_id' => $division])
     ->all();
 //end proces 
@@ -246,7 +248,7 @@ use backend\models\Docs;
                                     <div class="sparkline-chart">
                                         <div class="number" style="font-size: 20px;"><?php echo count($deny);?></div>
                                         <a class="title" href="<?= Url::to(['pmj/deny']) ?>" style="font-size: 15px;">
-                                        Rad qilinganlar <i class="icon-arrow-right"></i>
+                                        Rad etilganlar <i class="icon-arrow-right"></i>
                                         </a>
                                     </div>
                                 </div>
@@ -445,7 +447,7 @@ use backend\models\Docs;
                                     <div class="sparkline-chart">
                                         <div class="number" style="font-size: 20px;"><?php echo count($cityzenship_deny);?></div>
                                         <a class="title" href="<?= Url::to(['citizenship/deny']) ?>" style="font-size: 15px;">
-                                        Rad qilinganlar <i class="icon-arrow-right"></i>
+                                        Rad etilganlar <i class="icon-arrow-right"></i>
                                         </a>
                                     </div>
                                 </div>

@@ -18,8 +18,8 @@ class CitizenshipSearch extends Citizenship
     public function rules()
     {
         return [
-            [['id', 'nationality_id', 'study_id', 'marital_id', 'marital_nation', 'citizenship_id', 'status_id', 'division_id'], 'integer'],
-            [['guide', 'photo', 'surname', 'name', 'mname', 'pre_surname', 'pre_name', 'pre_mname', 'social_status', 'birth_date', 'profession', 'marital_name', 'marital_bdate', 'marital_place', 'court', 'army', 'army_now', 'medal', 'pmj', 'last_place', 'visit_uzb', 'business', 'cause', 'living_place', 'tel', 'file1', 'file2', 'file3', 'file4', 'comment'], 'safe'],
+            [['id', 'study_id', 'marital_id', 'marital_nation', 'citizenship_id', 'division_id'], 'integer'],
+            [['guide', 'photo', 'surname', 'name', 'nationality_id', 'mname', 'pre_surname', 'pre_name', 'pre_mname', 'social_status', 'birth_date', 'profession', 'marital_name', 'status_id', 'marital_bdate', 'marital_place', 'court', 'army', 'army_now', 'medal', 'pmj', 'last_place', 'visit_uzb', 'business', 'cause', 'living_place', 'tel', 'file1', 'file2', 'file3', 'file4', 'comment'], 'safe'],
         ];
     }
 
@@ -59,22 +59,25 @@ class CitizenshipSearch extends Citizenship
             return $dataProvider;
         }
 
+        $query->joinWith('spNation');
+        $query->joinWith('status');
+
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
             'birth_date' => $this->birth_date,
-            'nationality_id' => $this->nationality_id,
             'study_id' => $this->study_id,
             'marital_id' => $this->marital_id,
             'marital_bdate' => $this->marital_bdate,
             'marital_nation' => $this->marital_nation,
             'citizenship_id' => $this->citizenship_id,
-            'status_id' => $this->status_id,
             'division_id' => $this->division_id,
         ]);
 
         $query->andFilterWhere(['like', 'guide', $this->guide])
             ->andFilterWhere(['like', 'photo', $this->photo])
+            ->andFilterWhere(['like', 'sp_nationyii.sp_name_ru', $this->nationality_id])
+            ->andFilterWhere(['like', 'status.name_ru', $this->status_id])
             ->andFilterWhere(['like', 'surname', $this->surname])
             ->andFilterWhere(['like', 'name', $this->name])
             ->andFilterWhere(['like', 'mname', $this->mname])

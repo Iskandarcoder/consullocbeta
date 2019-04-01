@@ -32,7 +32,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 //'pre_name',
                 //'pre_mname',
                 //'social_status',
-                //'birth_date',
+                'birth_date',
                 [
                         'attribute' => 'nationality_id',
                         'value' => 'spNation.sp_name_ru',
