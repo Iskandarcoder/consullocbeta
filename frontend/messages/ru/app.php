@@ -129,10 +129,9 @@ return [
 	'Apostil</br>qo`yish' => 'Проставление<br/>Апостиля',
 	'Apostil qo`yish va<br/>hujjatlarni legallashtirish' => 'Проставление Апостиля<br/>и легализация<br/>документов',
 	'lang' => 'Русский',
-<<<<<<< HEAD
-=======
 
->>>>>>> ec186c78575d8dd3de5b3bbaeb0f15eab374ad67
+
+
 	'Oldingi familiyasi' => 'Прежняя фамилия',
     'Oldingi ismi' => 'Прежняя имя',
     'Otasining oldingi ismi' => 'Прежняя отчество',
@@ -251,20 +250,13 @@ return [
 	'Apostil</br>qo`yish' => 'Проставление<br/>Апостиля',
 	'Apostil qo`yish va<br/>hujjatlarni legallashtirish' => 'Проставление Апостиля<br/>и легализация<br/>документов',
 	'lang' => 'Русский',
-<<<<<<< HEAD
-=======
 
->>>>>>> ec186c78575d8dd3de5b3bbaeb0f15eab374ad67
 	'O`zbekistonnig xorijdagi vakolatxonalari' => 'Загранучреждения Республики Узбекистан',     
 	'Ko`p beriladigan savollar'=> 'Ответы на часто задаваемые вопросы',
 	'Umumiy savollar' => 'Общие вопросы',
 	'FHDYo bo`yicha savollar'=> 'Вопросы по ЗАГС',
 	'Pasport almashtirish va rasmiylashtirish tartibi bo`yicha savollar'=> 'Вопросы о порядке изменения и регистрации паспортов',
-<<<<<<< HEAD
-=======
 
-
->>>>>>> ec186c78575d8dd3de5b3bbaeb0f15eab374ad67
 	// HUJJATLARNI OLISH
 	'Familiyasi' => 'Фамилия',
 	'Sharifi' => 'Отчество',
@@ -313,10 +305,10 @@ return [
 	'Agar talab qilinayotgan hujjat shaxsan sizga tegishli bo`lmasa,<br>belgini bosing va quyidagi savollarga javob bering' => 'Если истребуется не свой лично документ, поставьте галочку и заполните форму',	
 	'Elchixona' => 'Посольство', 
 	'Elchixonani tanlang...' => 'Выберите посольство...', 
-<<<<<<< HEAD
+
     'Yaratish' => 'Создать', 
     'Yangilash' => 'Обновить', 
-=======
+
     'Ma`lumoti' =>'Образование',
     'Kasbi' =>'Профессия',
     'Ijtimoiy maqomi' =>'Социальное положение',
@@ -348,11 +340,6 @@ return [
     'O`zbekiston pasporti sahifalaridan nusxa' =>'Копия листов паспорта Республики Узбекистан',
     'Fuqarolikdan chiqishiga turmush o`rtog`ining roziligi nusxasi' =>'Копия письменного согласия супруга/супруги на выход из гражданства',
 
->>>>>>> c8ef30693ba9474b2dde9fa5fd180b8f86abc957
 
-<<<<<<< HEAD
-=======
-
->>>>>>> ec186c78575d8dd3de5b3bbaeb0f15eab374ad67
 ];
 ?>

@@ -70,7 +70,7 @@
 			</p>
 		</td>
 		<td style="text-align: right; font-size: 18px; width: 200px;">
-			<p><b>Форма-30</b></p>
+			
 		</td>
 	</tr>
 </table>
@@ -107,7 +107,7 @@
 		<tr>
 			<td style="border: 1px solid black; padding:5px; text-align: center;">3</td>
 			<td style="border: 1px solid black; padding:5px;">Гражданство этого лица (если гражданство менялось, укажите)</td>
-			<td style="border: 1px solid black; padding:5px;"><?=$model->citizenship_id;?></br><?=$model->pre_citizenship_id;?></td>
+			<td style="border: 1px solid black; padding:5px;"><?=$model->citizenship->sp_name_ru;?><br><?=$model->citizenship2->sp_name_ru;?></td>
 		</tr>
 		<tr>
 			<td style="border: 1px solid black; padding:5px; text-align: center;">4</td>
@@ -122,7 +122,7 @@
 			- если истребуется документ о пенсии<br> укажите когда, за что и какая организация<br> назначила пенсию, какая организация и<br> когда выплатила последний раз.  
 			</td>
 			<td style="border: 1px solid black; padding:5px;">
-				<?=$model->spDoc_type->sp_name_ru;?>:<br>
+				<?=$model->spDoctypeIstreb->sp_name_ru;?>:<br>
 				<?=$model->type_place;?> <?=$model->type_date;?><br> 
 				<?=$model->fio_father;?><br><?=$model->fio_mother;?> 
 				<?=$model->study_name;?><br><?=$model->study_place;?> <br>
@@ -162,7 +162,7 @@
 		<tr>
 			<td style="border: 1px solid black; padding:5px; text-align: center;">10</td>
 			<td style="border: 1px solid black; padding:5px;">Ваше гражданство</td>
-			<td style="border: 1px solid black; padding:5px;"><?=$model->sec_citizenship_id;?></td>
+			<td style="border: 1px solid black; padding:5px;"><?=$model->citizenship3->sp_name_ru;?></td>
 		</tr>
 		<tr>
 			<td style="border: 1px solid black; padding:5px; text-align: center;">11</td>

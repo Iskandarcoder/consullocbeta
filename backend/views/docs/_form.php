@@ -8,7 +8,7 @@ use kartik\select2\Select2;
 use yii\helpers\ArrayHelper;
 use backend\models\SpNationyii;
 use backend\models\SpCountry;
-use backend\models\SpDoc_type;
+use backend\models\SpDoctypeIstreb;
 use backend\models\SpDivisionyii;  
 use backend\models\Docsstatus;
 use backend\models\Status;
@@ -155,7 +155,7 @@ $lang = Yii::$app->language;
                                     <div class="row">
                                          <div class="form-group col-sm-12">
                                             <?= $form->field($model, 'type_id')->widget(Select2::classname(), [
-                                              'data' => ArrayHelper::map(SpDoc_type::find()->all(), 'sp_id', 'sp_name_'.Yii::$app->language),
+                                              'data' => ArrayHelper::map(SpDoctypeIstreb::find()->all(), 'sp_id', 'sp_name_'.Yii::$app->language),
                                              // 'language' => 'ru',
                                               'options' => ['placeholder' => Yii::t('app', 'Hujjatni tanlang...')],
                                               'pluginOptions' => [
