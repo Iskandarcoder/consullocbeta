@@ -37,14 +37,17 @@ $this->params['breadcrumbs'][] = $this->title;
                 //'pre_mname',
                 'birth_date',
                 'birth_place',
-                'citizenship_id',
+                [
+                    'attribute' => 'citizenship_id',
+                    'value' => 'citizenship.sp_name_'.Yii::$app->language,
+                ],
                 // [
                 //     'attribute' => 'nation_id',
                 //     'value' => 'spNationyii.sp_name_ru',
                 // ],
                 [
                     'attribute' => 'type_id',
-                    'value' => 'SpDoctypeIstreb.sp_name_'.Yii::$app->language,
+                    'value' => 'spDoctypeIstreb.sp_name_'.Yii::$app->language,
                 ],
                 // 'type_place',
                 // 'type_date',
