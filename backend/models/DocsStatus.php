@@ -8,9 +8,10 @@ use Yii;
  * This is the model class for table "docsstatus".
  *
  * @property int $id
- * @property string $name
+ * @property string $name_uz
+ * @property string $name_ru
  */
-class DocsStatus extends \yii\db\ActiveRecord
+class Docsstatus extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}
@@ -26,8 +27,8 @@ class DocsStatus extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name'], 'required'],
-            [['name'], 'string', 'max' => 20],
+            [['name_uz', 'name_ru'], 'required'],
+            [['name_uz', 'name_ru'], 'string', 'max' => 30],
         ];
     }
 
@@ -38,7 +39,8 @@ class DocsStatus extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Name',
+            'name_uz' => 'Name Uz',
+            'name_ru' => 'Name Ru',
         ];
     }
 }

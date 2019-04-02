@@ -7,12 +7,12 @@ use yii\grid\GridView;
 /* @var $searchModel backend\models\DocsSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('app', 'Jarayonda');
+$this->title = Yii::t('app', 'Yangi');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
     <div class="well well-lg" style="background-color: white;border-radius: 8px!important; color: #18b19c;">
-    <h3><b><?= Yii::t('app', 'Toshkentga yuborilgan arizalar'); ?></b></h3></br>    
+    <h3><b><?= Yii::t('app', 'Yangi arizalar'); ?></b></h3></br>    
     <div class="docs-index">
 
    

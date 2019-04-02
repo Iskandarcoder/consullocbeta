@@ -182,7 +182,7 @@ class Docs extends \yii\db\ActiveRecord
 
          public function getDocsStatus()
     {
-        return $this->hasOne(DocsStatus::className(), ['id' => 'division_id']);
+        return $this->hasOne(DocsStatus::className(), ['id' => 'status_id']);
     }
 
     public function getSpNation()

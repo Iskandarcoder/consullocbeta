@@ -42,15 +42,19 @@ $this->params['breadcrumbs'][] = $this->title;
             'birth_date',
             'birth_place',
             // 'nation_id',
-            [
+            [                   
                     'label' => Yii::t('app', 'Millati'),
-                    'value' => $model->spNation->sp_name_uz,
+                    'value' => $model->spNation->{'sp_name_'.$lang},
             ],
-            'citizenship_id',
+            [                   
+                    'label' => Yii::t('app', 'Fuqaroligi'),
+                    'value' => $model->citizenship->{'sp_name_'.$lang},
+            ],
+            // 'citizenship_id',
             // 'pre_citizenship_id',
             [
                     'label' => Yii::t('app', 'Talab qilinayotgan hujjat turi'),
-                    'value' => $model->spDoctypeIstreb->sp_name_uz,
+                    'value' => $model->spDoctypeIstreb->{'sp_name_'.$lang},
             ],
             // 'type_id',
             'type_place',
@@ -81,10 +85,10 @@ $this->params['breadcrumbs'][] = $this->title;
             'sec_tel',
             'sec_fax',
             // 'scan_file:ntext',
-            [
+                [
                     'label' => Yii::t('app', 'Holati'),
-                    'value' => $model->docsStatus->name,
-            ],
+                    'value' => $model->docsStatus->{'name_'.$lang},
+                ],
             // 'status_id',
             'email:email',
             // 'division_id',
