@@ -3,7 +3,7 @@
 namespace frontend\controllers;
 
 use Yii;
-use backend\models\AnketaNew;
+use frontend\models\AnketaNew;
 use frontend\models\AnketaNewSearch;
 use frontend\components\BaseController;
 //use yii\web\Controller;
