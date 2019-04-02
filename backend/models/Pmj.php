@@ -63,8 +63,12 @@ class Pmj extends \yii\db\ActiveRecord
             [['guide'], 'string', 'max' => 35],
             [['comment'], 'string', 'max' => 500],
             [['reason', 'security', 'law_court', 'criminal', 'army', 'photo', 'photo1', 'photo2', 'photo3'], 'string', 'max' => 500],
+<<<<<<< HEAD
 
             [['file','file1','file2','file3'],'file'],      
+=======
+            [['file','file1','file2','file3'],'file'], 
+>>>>>>> bcbacb4884d85d90b8483b88b2796f1a8a4112d8
         ];
     }
 
