@@ -185,10 +185,11 @@ use yii\captcha\Captcha;
                             <?= $form->field($model, 'pre_citizenship_id')->widget(Select2::classname(), [
                          'data' => ArrayHelper::map(SpCountryyii::find()->all(), 'sp_id', 'sp_name_'.Yii::$app->language),
                          'language' => 'ru',
-                        'options' => ['placeholder' => Yii::t('app', 'Fuqarolikni tanlang...')],
+                         'options' => ['placeholder' => Yii::t('app', 'Fuqarolikni tanlang...')],
                          'pluginOptions' => [
                               'allowClear' => true,
                             'multiple' => false,
+
                           ],
                       ]); ?>
                         </div>

@@ -77,7 +77,7 @@ AppAsset::register($this);
                 </li>
                 <li class="classic-menu-dropdown">
                     <a href="<?= Url::to(['dead/index'])?>">
-                    Vafot etgangar <span class="selected">
+                    Vafot etganlar <span class="selected">
                     </span>
                     </a>
                 </li>
