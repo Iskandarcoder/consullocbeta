@@ -144,7 +144,7 @@ class Docs extends \yii\db\ActiveRecord
     }
 
 
-    public function setRandomString($length = 32)
+    public function setRandomString($length = 25)
 
     {
 

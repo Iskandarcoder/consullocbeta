@@ -152,6 +152,8 @@ class DocsController extends BaseController
 
         if ($model->load(Yii::$app->request->post())) {
              $model->file = UploadedFile::getInstance($model,'file');
+             $usluga = Usluga::find()->where(['id'=>3])->all();
+            $model->p_guid = $model->p_division.$model->p_guid.$usluga['0']['number'];
             if ($model->file) {
             $imageName=Yii::$app->getSecurity()->generateRandomString().'.'.$model->file->extension;
             $upload_path = Yii::getAlias('@backend/web/uploads/').$imageName;
