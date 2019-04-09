@@ -5,20 +5,20 @@ namespace backend\models;
 use Yii;
 
 /**
- * This is the model class for table "docsstatus".
+ * This is the model class for table "usluga".
  *
  * @property int $id
- * @property string $name_uz
- * @property string $name_ru
+ * @property string $number
+ * @property string $name
  */
-class Docsstatus extends \yii\db\ActiveRecord
+class Usluga extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}
      */
     public static function tableName()
     {
-        return 'docsstatus';
+        return 'usluga';
     }
 
     /**
@@ -27,8 +27,9 @@ class Docsstatus extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name_uz', 'name_ru'], 'required'],
-            [['name_uz', 'name_ru'], 'string', 'max' => 30],
+            [['number', 'name'], 'required'],
+            [['number'], 'string', 'max' => 2],
+            [['name'], 'string', 'max' => 500],
         ];
     }
 
@@ -39,8 +40,8 @@ class Docsstatus extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name_uz' => 'Name Uz',
-            'name_ru' => 'Name Ru',
+            'number' => 'Number',
+            'name' => 'Name',
         ];
     }
 }

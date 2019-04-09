@@ -3,8 +3,8 @@
 namespace frontend\controllers;
 
 use Yii;
-use backend\models\SpDoc_Type;
-use frontend\models\SpDoc_TypeSearch;
+use backend\models\SpDoctypeIstreb;
+use frontend\models\SpDoctypeIstrebSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -12,7 +12,7 @@ use yii\filters\VerbFilter;
 /**
  * SpDoc_TypeController implements the CRUD actions for SpDoc_Type model.
  */
-class SpDoc_TypeController extends Controller
+class SpDoctypeIstrebController extends Controller
 {
     /**
      * @inheritdoc
@@ -30,12 +30,12 @@ class SpDoc_TypeController extends Controller
     }
 
     /**
-     * Lists all SpDoc_Type models.
+     * Lists all SpDoctypeIstreb models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new SpDoc_TypeSearch();
+        $searchModel = new SpDoctypeIstrebSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -57,13 +57,13 @@ class SpDoc_TypeController extends Controller
     }
 
     /**
-     * Creates a new SpDoc_Type model.
+     * Creates a new SpDoctypeIstreb model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new SpDoc_Type();
+        $model = new SpDoctypeIstreb();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->sp_id]);
@@ -75,7 +75,7 @@ class SpDoc_TypeController extends Controller
     }
 
     /**
-     * Updates an existing SpDoc_Type model.
+     * Updates an existing SpDoctypeIstreb model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -94,7 +94,7 @@ class SpDoc_TypeController extends Controller
     }
 
     /**
-     * Deletes an existing SpDoc_Type model.
+     * Deletes an existing SpDoctypeIstreb model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -107,15 +107,15 @@ class SpDoc_TypeController extends Controller
     }
 
     /**
-     * Finds the SpDoc_Type model based on its primary key value.
+     * Finds the SpDoctypeIstreb model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return SpDoc_Type the loaded model
+     * @return SpDoctypeIstreb the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = SpDoc_Type::findOne($id)) !== null) {
+        if (($model = SpDoctypeIstreb::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

@@ -115,18 +115,20 @@ class DocsController extends BaseController
             if($model->status_id == '3'){
                 $from='infoembassyuz@gmail.com';
                 $to=$model->email;
-                $subject='consul.mfa.uz javob xati';                
+                $subject='consul.mfa.uz javob xati // Ответ consul.mfa.uz';                
                 $body = $model->comment;
                 Yii::$app->mailer->compose()
                 ->setFrom($from)
                 ->setTo($to)
                 ->setSubject($subject)
-                ->setTextBody('Sizning arizangiz konsul tomonidan qabul qilinib, tekshirish uchun Toshkentga yuborildi. So`rovingiz natijasi xabar qilinadi.')
+                ->setTextBody('Sizning arizangiz konsul tomonidan qabul qilinib, tekshirish uchun Toshkentga yuborildi. So`rovingiz natijasi xabar qilinadi.
+-----------------------------------------------------------------------------------------------
+Ваша анкета принята и отправлена в Ташкент на рассмотрение. Результат заявки будет сообщено.')
                 ->send();
             }elseif($model->status_id == '2'){
                 $from='infoembassyuz@gmail.com';
                 $to=$model->email;
-                $subject='consul.mfa.uz javob xati';                
+                $subject='consul.mfa.uz javob xati // Ответ consul.mfa.uz';                
                 $body = $model->comment;
                 Yii::$app->mailer->compose()
                 ->setFrom($from)
@@ -137,24 +139,28 @@ class DocsController extends BaseController
             }elseif($model->status_id == '4'){
                 $from='infoembassyuz@gmail.com';
                 $to=$model->email;
-                $subject='consul.mfa.uz javob xati';                
+                $subject='consul.mfa.uz javob xati // Ответ consul.mfa.uz';                
                 $body = $model->comment;
                 Yii::$app->mailer->compose()
                 ->setFrom($from)
                 ->setTo($to)
                 ->setSubject($subject)
-                ->setTextBody('Sizning arizangizga rad javobi berildi.')
+                ->setTextBody('Sizning arizangizga rad javobi berildi.
+-----------------------------------------------------------------------------------------------
+Ваше заявление отклонено')
                 ->send();
             }elseif($model->status_id == '5'){
                 $from='infoembassyuz@gmail.com';
                 $to=$model->email;
-                $subject='consul.mfa.uz javob xati';                
+                $subject='consul.mfa.uz javob xati // Ответ consul.mfa.uz';                
                 $body = $model->comment;
                 Yii::$app->mailer->compose()
                 ->setFrom($from)
                 ->setTo($to)
                 ->setSubject($subject)
-                ->setTextBody('Sizning so`ragan hujjatingiz tayyor. Hujjatni olib ketish uchun e-navbat.mfa.uz veb-sahifasi orqali navbat olib, konsul qabuliga kelishingiz mumkin.')
+                ->setTextBody('Sizning so`ragan hujjatingiz tayyor. Hujjatni olib ketish uchun e-navbat.mfa.uz veb-sahifasi orqali navbat olib, konsul qabuliga kelishingiz mumkin.
+-----------------------------------------------------------------------------------------------
+Ваш истребованный документ готов. Чтобы забрать документ Вы можете взять очередь с веб-сайта e-navbat.mfa.uz и прийти на прием к консулу.')
                 ->send();
             }
                 $model->save();
@@ -180,6 +186,26 @@ class DocsController extends BaseController
         return $this->redirect(['index']);
     }
 
+     public function actionNewdoc()
+    {
+        $searchModel = new DocsSearch();
+
+        $params = Yii::$app->request->queryParams;
+        $division = Yii::$app->user->identity->dvision_id;
+
+        $params['DocsSearch']['division_id'] = $division;
+        $params['DocsSearch']['status_id'] = 1;
+
+        $dataProvider = $searchModel->search($params);
+
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        return $this->render('newdoc', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
+
      public function actionProcess()
     {
         $searchModel = new DocsSearch();
@@ -188,7 +214,7 @@ class DocsController extends BaseController
         $division = Yii::$app->user->identity->dvision_id;
 
         $params['DocsSearch']['division_id'] = $division;
-        $params['DocsSearch']['status_id'] = 3;
+        $params['DocsSearch']['status_id'] = 5;
 
         $dataProvider = $searchModel->search($params);
 

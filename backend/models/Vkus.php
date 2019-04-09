@@ -64,7 +64,7 @@ class Vkus extends \yii\db\ActiveRecord
     /**
      * @inheritdoc
      */
-     public $verifyCode;
+    
      
     public static function tableName()
     {
@@ -93,7 +93,7 @@ class Vkus extends \yii\db\ActiveRecord
             [['status'], 'string', 'max' => 1],
             // [['adinfo'], 'string', 'max' => 1024],
             [['which_school'], 'string', 'max' => 255],
-            ['verifyCode', 'captcha'],
+            
         ];
     }
 

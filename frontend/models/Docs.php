@@ -75,6 +75,7 @@ class Docs extends \backend\models\Docs
     {
         return [
            [['surname', 'name', 'mname', 'birth_date', 'birth_place', 'nation_id', 'citizenship_id', 'type_id',  'doc_target', 'living_place', 'tel', 'scan_file', 'division_id', 'email', ], 'required'],
+
             [['birth_date', 'type_date', 'study_start_date', 'study_end_date', 'citizenship_id', 'pre_citizenship_id', 'sec_citizenship_id', 'pension_date', 'sec_birthdate'], 'safe'],
             [['nation_id', 'type_id', 'sec_tel', 'sec_fax', 'status_id', 'division_id' ], 'integer'],
             [['scan_file'], 'string'],

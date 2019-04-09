@@ -185,10 +185,11 @@ use yii\captcha\Captcha;
                             <?= $form->field($model, 'pre_citizenship_id')->widget(Select2::classname(), [
                          'data' => ArrayHelper::map(SpCountryyii::find()->all(), 'sp_id', 'sp_name_'.Yii::$app->language),
                          'language' => 'ru',
-                        'options' => ['placeholder' => Yii::t('app', 'Fuqarolikni tanlang...')],
+                         'options' => ['placeholder' => Yii::t('app', 'Fuqarolikni tanlang...')],
                          'pluginOptions' => [
                               'allowClear' => true,
                             'multiple' => false,
+
                           ],
                       ]); ?>
                         </div>
@@ -227,7 +228,7 @@ use yii\captcha\Captcha;
                       <div class="row">
                          <div class="form-group col-sm-12">
                             <?= $form->field($model, 'division_id')->widget(Select2::classname(), [
-                         'data' => ArrayHelper::map(SpDivisionyii::find()->all(), 'sp_id', 'sp_name_'.Yii::$app->language),
+                         'data' => ArrayHelper::map(SpDivisionyii::find()->where(['sp_idfirst' => 1])->all(), 'sp_id', 'sp_name_'.Yii::$app->language),
                          'language' => 'ru',
                         'options' => ['placeholder' => Yii::t('app', 'Elchixonani tanlang...')],
                          'pluginOptions' => [

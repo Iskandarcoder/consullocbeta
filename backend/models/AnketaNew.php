@@ -66,7 +66,7 @@ class AnketaNew extends \yii\db\ActiveRecord
     /**
      * @inheritdoc
      */
-    public $verifyCode;
+    
     public static function tableName()
     {
         return 'anketa_new';
@@ -92,7 +92,7 @@ class AnketaNew extends \yii\db\ActiveRecord
             [['p_korpus'], 'string', 'max' => 5],
             [['p_address', 'p_addressout', 'p_reasonfull'], 'string', 'max' => 400],
             [['p_work'], 'string', 'max' => 128],
-            ['verifyCode', 'captcha'],
+            
         ];
     }
 

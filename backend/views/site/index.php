@@ -7,19 +7,24 @@ use backend\models\Docs;
 use backend\models\Loss;
 
 
+// barcha arizalar soni
+    $division = Yii::$app->user->identity->dvision_id;
+    $alldoc = Docs::find()
+    // ->Where(['status_id'=>'1'])
+    ->Where(['division_id' => $division])
+    ->all();
 
 // yangi arizalar soni
-    $division = Yii::$app->user->identity->dvision_id;
-    $new = Docs::find()
-    // ->Where(['status_id'=>'2'])
-    ->Where(['division_id' => $division])
+    $newdoc = Docs::find()
+    ->Where(['status_id'=>'1'])
+    ->andWhere(['division_id' => $division])
     ->all();
 
 //Jarayondagi arizalar soni
     $process = Docs::find()
     // ->Where(['>', 'status_id','1'])
-    ->Where(['status_id'=>'3'])    
-    ->andWhere(['division_id' => $division])
+    ->Where(['division_id' => $division])   
+    ->andWhere(['status_id'=>[2, 3, 5]]) 
     ->all();
     
 //Rad etilgan arizalar soni
@@ -314,16 +319,26 @@ use backend\models\Loss;
                         <div class="portlet-body">
                             <div class="row">
                                 <div class="col-md-3">
+
                                     <div class="sparkline-chart">
-                                        <div class="number" style="font-size: 20px;"><?php echo count($new);?></div>
+                                        <div class="number" style="font-size: 20px;"><?php echo count($alldoc);?></div>
                                         <a class="title" href="<?= Url::to(['docs/index']) ?>" style="font-size: 15px;">    
                                         Barcha arizalar<i class="icon-arrow-right"></i>
                                         </a>
                                     </div>
                                 </div>
+                                
+                                <div class="col-md-2">
+                                    <div class="sparkline-chart">
+                                        <div class="number" style="font-size: 20px;"><?php echo count($newdoc);?></div>
+                                        <a class="title" href="<?= Url::to(['docs/newdoc']) ?>" style="font-size: 15px;">    
+                                        Yangi<i class="icon-arrow-right"></i>
+                                        </a>
+                                    </div>
+                                </div>
                                 <div class="margin-bottom-10 visible-sm">
                                 </div>
-                                <div class="col-md-3">
+                                <div class="col-md-2">
                                     <div class="sparkline-chart">
                                         <div class="number" style="font-size: 20px;"><?php echo count($process);?></div>
                                         <a class="title" href="<?= Url::to(['docs/process']) ?>" style="font-size: 15px;">
@@ -333,11 +348,11 @@ use backend\models\Loss;
                                 </div>
                                 <div class="margin-bottom-10 visible-sm">
                                 </div>
-                                <div class="col-md-3">
+                                <div class="col-md-2">
                                     <div class="sparkline-chart">
                                         <div class="number" style="font-size: 20px; "><?php echo count($rejected);?></div>
                                         <a class="title" href="<?= Url::to(['docs/rejected']) ?>" style="font-size: 15px;">
-                                        Rad etilganlar <i class="icon-arrow-right"></i>
+                                        Rad etilgan <i class="icon-arrow-right"></i>
                                         </a>
                                     </div>
                                 </div>

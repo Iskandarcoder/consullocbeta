@@ -83,7 +83,7 @@ class Docs extends \yii\db\ActiveRecord
             [['guide'], 'string', 'max' => 35],
 
             [['comment'], 'string', 'max' => 200],
-            ['verifyCode', 'captcha'],
+            
         ];
     }
 
@@ -139,7 +139,7 @@ class Docs extends \yii\db\ActiveRecord
             'division_id' => Yii::t('app','Elchixona'),
             'status_id' => Yii::t('app','Holati'),
             'comment' => Yii::t('app','Izoh'),
-            'verifyCode' => 'Verification Code',
+            
         ];
     }
 
@@ -182,7 +182,7 @@ class Docs extends \yii\db\ActiveRecord
 
          public function getDocsStatus()
     {
-        return $this->hasOne(DocsStatus::className(), ['id' => 'division_id']);
+        return $this->hasOne(DocsStatus::className(), ['id' => 'status_id']);
     }
 
     public function getSpNation()

@@ -378,7 +378,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                     <div class="row">
                                         <div class="col-sm-12">
                                             <?= $form->field($model, 'status_id')->dropDownList(
-                                                ArrayHelper::map(DocsStatus::find()->all(), 'id','name') 
+                                                ArrayHelper::map(DocsStatus::find()->all(), 'id','name_'.Yii::$app->language)) 
                                                 // ['prompt'=>Yii::t('app', 'Ariza holatini belgilang...')]
                                             ) ?>
                                         </div>

@@ -12,6 +12,8 @@ use backend\models\SpDoctypeIstreb;
 use backend\models\SpDivisionyii;  
 use backend\models\Docsstatus;
 use backend\models\Status;
+use yii\captcha\Captcha;
+
 
 /* @var $this yii\web\View */
 /* @var $model backend\models\Docs */
@@ -367,7 +369,7 @@ $lang = Yii::$app->language;
                                     <div class="row">
                                         <div class="col-sm-12">
                                             <?= $form->field($model, 'status_id')->dropDownList(
-                                                ArrayHelper::map(DocsStatus::find()->all(), 'id','name') 
+                                                ArrayHelper::map(DocsStatus::find()->all(), 'id','name_'.Yii::$app->language) 
                                                 // ['prompt'=>Yii::t('app', 'Ariza holatini belgilang...')]
                                             ) ?>
                                         </div>
