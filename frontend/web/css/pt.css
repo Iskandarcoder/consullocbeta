@@ -32,12 +32,28 @@ body {
     z-index: 1;
 }
 
+.liner6 {
+    height: 2px;
+    background: #ccc;
+    position: absolute;
+    width: 80%;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    top: 35%;
+    z-index: 1;
+}
+
 .nav-tabs > li {
     width: 25%;
 }
 
-.li4 > li {
+.li7 > li {
     width: 14%;
+}
+
+.li6 > li {
+    width: 16.6%;
 }
 
 .nav-tabs > li:after {

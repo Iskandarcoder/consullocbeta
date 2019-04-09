@@ -11,6 +11,9 @@ use yii\filters\VerbFilter;
 use frontend\components\BaseController;
 use yii\web\UploadedFile;
 use backend\models\Model;
+use common\models\CaptchaCode;
+
+
 
 
 /**
@@ -43,6 +46,16 @@ class DocsController extends BaseController
         return $this->render('barcode', [
             'guide' => $guide,
         ]);
+    }
+
+    public function actions()
+    {
+        return [
+            'captcha' => [
+                'class' => 'yii\captcha\CaptchaAction',
+                'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
+            ],
+        ];
     }
 
     public function actionPdf($id)
@@ -147,10 +160,11 @@ class DocsController extends BaseController
             }
             $model->save();
             return $this->redirect(['export-pdf', 'id' => $model->id]);
-        } 
+        } else { 
             return $this->render('create', [
                 'model' => $model,
-            ]);        
+            ]);
+        }        
     }
 
 
@@ -173,8 +187,6 @@ class DocsController extends BaseController
             $model->photo = $imageName;
             }
             $model->save();
-
-
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('update', [

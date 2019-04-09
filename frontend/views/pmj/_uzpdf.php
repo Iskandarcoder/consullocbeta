@@ -1,5 +1,4 @@
 <?php
-	use backend\models\SpNation;
 	use frontend\widgets\barcode\BarcodeGenerator;
 	$generator = new BarcodeGenerator();
 	$barcodeTypes = [
@@ -65,280 +64,276 @@
 				?>
 				<div style="text-align: left;">
 					<?php echo '<img style="margin-top: -10px;" src="data:image/png;base64,'.base64_encode($image).'" />'; ?>
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?= $model->guide; ?>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?= $model->guide; ?>
 				</div><br>
 			</p>
-		</td>
-		<td style="text-align: right; font-size: 18px; width: 200px;">
-			<p><b>Форма-30</b></p>
-		</td>
+		</td>		
 	</tr>
-</table>
+</table><br><br>
 <table  width="800" border="0" cellpadding="0" cellspacing="0" class="anketa-pdf" style="font-size: 15px;">
 	<tr>
 		<td style=" padding: 5px;" class="text-center">
-			<p style="font-size: 20px"><?= $model->spDivision->sp_name_uz; ?></p>
-		</td>
-		<td style="text-align: right;padding:5px; position: relative;">
-			<img style="width:125; height:170px; overflow:hidden" src="/uploads/<?= $model->photo;?>">			
-		</td>
+			<p style="font-size: 20px"><?= $model->spDivision->name_uz; ?></p>
+		</td>		
 	</tr>
-</table>
+</table><br><br>
 <table width="800" border="0" cellpadding="0" cellspacing="0" class="anketa-pdf" style="font-size: 15px;">	
 	<tr>
-		<td colspan="3" style="padding:15px;" class="text-center">
-			<p style="font-size: 20px;"><b>Сўровнома - ариза<br>(чет элга чиқиш учун)</b></p>
+		<td width="350px">
+		</td>
+		<td >
+			<p style="font-size: 18px"><b>Президенту Республики Узбекистан  г-ну Мирзиёеву Шавкату Миромоновичу, от гражданина(ки) Республики Узбекистан<br><?= $model->surname ?> <?= $model->name ?> <?= $model->mname ?><br>
+проживающего (ей) по адресу: <?= $model->living_place ?><br>сот.тел.: <?= $model->tel ?></b></p>
 
 		</td>
 	</tr>
+</table><br><br><br><br>
+<table  width="800" border="0" cellpadding="0" cellspacing="0" class="anketa-pdf" style="font-size: 15px;">
 	<tr>
-		<td class="text-center" style="border: 1px solid black; width: 50px;">
-			<p><b>№</b></p>
-		</td>
-		<td colspan="2" style="border: 1px solid black; padding:15px;"></td>
-	</tr>
+		<td style=" padding: 5px;" class="text-center">
+			<p style="font-size: 20px"><b>З А Я В Л Е Н И Е</b></p>
+		</td>		
+	</tr><br><br>
 	<tr>
-		<td class="text-center" style="border: 1px solid black;">
-			<p><b>1</b></p>
-		</td>
-		<td style=" padding: 5px; border: 1px solid black;">
-			<p><b>Фамилия, исми, шарифи</b><br>(фамилия, исм, шарифи ўзгарган бўлса кўрсатилсин)</p>
-		</td>
-		<td style="border: 1px solid black; padding:15px; width: 400px;">
-			<?= $model->surname; ?> <?= $model->name; ?> <?= $model->mname; ?><br><?= $model->pre_surname; ?> <?= $model->pre_name; ?> <?= $model->pre_mname; ?>
-		</td>
-	</tr>
-	<tr>
-		<td class="text-center" style="border: 1px solid black;">
-			<p><b>2</b></p>
-		</td>
-		<td style=" padding: 5px;border: 1px solid black;">
-			<p><b>Миллати</b></p>
-		</td>
-		<td style="border: 1px solid black; padding:15px;">
-			<?= $model->spNation->sp_name_uz; ?>
-		</td>			
-	</tr>
-	<tr>
-		<td class="text-center" style="border: 1px solid black;">
-			<p><b>3</b></p>
-		</td>
-		<td style=" padding: 5px;border: 1px solid black;">
-			<p><b>Туғилган сана, ой ва йили</b></p>
-		</td>
-		<td style="border: 1px solid black; padding:15px;">
-			<?= $model->birth_date; ?>
+		<td style=" padding: 5px;">
+			<p style="font-size: 18px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Я,<?= $model->surname ?> <?= $model->name ?> <?= $model->mname ?>, прошу Вас оформить мне утрату гражданства Республики Узбекистан, в связи с <?= $model->cause->name_uz;?><?php if((($model->cause_id)=='1')||(($model->cause_id)=='5')){ echo " ("; echo $model->spCountry->sp_name_uz; ;  echo ")."; }else{ echo "."; }  ?></p>
 		</td>		
 	</tr>
+</table><br><br><br><br>
+<table  width="800" border="0" cellpadding="0" cellspacing="0" class="anketa-pdf" style="font-size: 15px;">
 	<tr>
-		<td class="text-center" style="border: 1px solid black;">
-			<p><b>4</b></p>
+		<td style=" padding: 5px;" class="text-center">
+			<p style="font-size: 18px"><b><?= $model->date;?></b><br><?= $model->city;?></p>
 		</td>
+		<td style=" padding: 5px;" class="text-center">
+			<p style="font-size: 18px"><b><?= $model->surname ?> <?= $model->name ?> <?= $model->mname ?></b></p>
+		</td>			
+	</tr>
+</table>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<table width="800" border="0" cellpadding="0" cellspacing="0" class="anketa-pdf" style="font-size: 15px;">	
+	<tr>
+		<td colspan="3" style="padding:15px;" class="text-center">
+			<p style="font-size: 20px;"><b>А В Т О Б И О Г Р А Ф И Я</b></p>
+		</td>
+	</tr>
+	<tr>		
+		<td style=" padding: 5px; border: 1px solid black;">
+			<p><b>Фамилия, имя, отчество</b><br>(если ранее имели другие фамилию, укажите)</p>
+		</td>
+		<td style="border: 1px solid black; padding:15px; width: 400px;">
+			<?= $model->surname; ?> <?php if(($model->cause_id)!='NULL'){ echo " ("; echo $model->pre_mname; ;  echo ")"; }else{ echo " "; }  ?> <?= $model->name; ?> <?= $model->mname; ?>
+		</td>
+	</tr>	
+	<tr>
 		<td style=" padding: 5px;border: 1px solid black;">
-			<p><b>Туғилган жойи</b><br>(республика, вилоят, туман, аҳоли пункти)</p>
+			<p><b>Число, месяц, год рождения</b></p>
+		</td>
+		<td style="border: 1px solid black; padding:15px;">
+			<?= $model->birt_date; ?>
+		</td>
+	</tr>
+	<tr>
+		<td style=" padding: 5px;border: 1px solid black;">
+			<p><b>Место рождения</b><br>(республика, край, область, населенный пункт)</p>
 		</td>
 		<td style="border: 1px solid black; padding:15px;">
 			<?= $model->birth_place; ?>
 		</td>
-	</tr>	
+	</tr>
 	<tr>
-		<td class="text-center" style="border: 1px solid black;">
-			<p><b>5</b></p>
-		</td>
 		<td style=" padding: 5px;border: 1px solid black;">
-			<p><b>Доимий яшаш жойи (прописка)</b></p>
+			<p><b>Гражданство</b></p>
+		</td>
+		<td style="border: 1px solid black; padding:15px;">
+			<?= $model->spCountry3->sp_name_uz;?>
+		</td>
+	</tr>
+	<tr>
+		<td style=" padding: 5px;border: 1px solid black;">
+			<p><b>Национальность</b></p>
+		</td>
+		<td style="border: 1px solid black; padding:15px;">
+			<?= $model->spNation->sp_name_uz; ?>
+		</td>
+	</tr>
+	<tr>
+		<td style=" padding: 5px;border: 1px solid black;">
+			<p><b>Образование</b></p>
+		</td>
+		<td style="border: 1px solid black; padding:15px;">
+			<?= $model->education->uz_type_edu; ?>
+		</td>
+	</tr>
+	<tr>
+		<td style=" padding: 5px;border: 1px solid black;">
+			<p><b>Судимости</b></p>
+		</td>
+		<td style="border: 1px solid black; padding:15px;">
+			<?= $model->court; ?>
+		</td>	
+	</tr>
+	<tr>
+		<td style=" padding: 5px;border: 1px solid black;">
+			<p><b>Семейная положения</b></p>
+		</td>
+		<td style="border: 1px solid black; padding:15px;">
+			<?= $model->spMarital->sp_name_uz; ?>
+		</td>
+	</tr>	
+	<?php if(($model->marital_id)=='2')
+		{  
+			echo   "<tr>			
+						<td style='padding: 5px;border: 1px solid black;'>
+							<p><b>Дата вступления в брак</b></p>
+						</td>
+						<td style='border: 1px solid black; padding:15px;'>";
+						echo $model->wedding_date; ;
+				  echo "</td>
+					</tr>" ;				
+		}else{
+			echo " ";
+		} ?>
+	<tr>
+		<td style=" padding: 5px;border: 1px solid black;">
+			<p><b>Страна пребывания</b></p>
+		</td>
+		<td style="border: 1px solid black; padding:15px;">
+			<?= $model->spCountry2->sp_name_uz; ?>
+		</td>
+	</tr>
+	<tr>
+		<td style=" padding: 5px;border: 1px solid black;">
+			<p><b>Дата пребывания</b></p>
+		</td>
+		<td style="border: 1px solid black; padding:15px;">
+			<?= $model->enter_date; ?>
+		</td>
+	</tr>
+	<tr>
+		<td style=" padding: 5px;border: 1px solid black;">
+			<p><b>Место постоянного жительства (прописки)</b></p>
 		</td>
 		<td style="border: 1px solid black; padding:15px;">
 			<?= $model->living_place; ?>
 		</td>
 	</tr>
 	<tr>
-		<td class="text-center" style="border: 1px solid black;">
-			<p><b>6</b></p>
-		</td>
 		<td style=" padding: 5px;border: 1px solid black;">
-			<p><b>Фуқаролиги</b><br>(агар бошқа давлат фуқаролиги бўлса, улар кўрсатилсин)</p>
+			<p><b>До переезда проживал/проживала по адресу</b></p>
 		</td>
 		<td style="border: 1px solid black; padding:15px;">
-			<?= $model->spCountry->sp_name_uz;?> <?= $model->spCountry2->sp_name_uz; ?>
+			<?= $model->last_place; ?>
 		</td>
 	</tr>
+</table><br><br><br>
+<table width="800" border="0" cellpadding="0" cellspacing="0" class="anketa-pdf" style="font-size: 15px;" style=" border-collapse: collapse;">
 	<tr>
-		<td class="text-center" style="border: 1px solid black;">
-			<p><b>7</b></p>
-		</td>
-		<td style=" padding: 5px;border: 1px solid black;">
-			<p><b>Паспорт серияси, №, қачон ва ким томонидан берилган</b></p>
-		</td>
-		<td style="border: 1px solid black; padding:15px;">
-			<?= $model->seria_pasp; ?> <?= $model->numb_pasp; ?><br><?= $model->pasp_date; ?> <?= $model->pasp_place; ?>
+		<td colspan="3" style="padding:15px;" class="text-center">
+			<p style="font-size: 17px;"><b>Трудовая деятельность</b></p>
 		</td>
 	</tr>	
 	<tr>
-		<td class="text-center" style="border: 1px solid black;">
-			<p><b>8</b></p>
-		</td>
-		<td style=" padding: 5px;border: 1px solid black;">
-			<p><b>Хорижга чиқишдан мақсад</b><br>(вақтинчалик, доимий яшаш учун, туризм, хизмат сафари, кетиш давлати)</p>
-		</td>
-		<td style="border: 1px solid black; padding:15px;">
-			<?= $model->reason; ?>
-		</td>
-	</tr>
-	<tr>
-		<td class="text-center" style="border: 1px solid black;">
-			<p><b>9</b></p>
-		</td>
-		<td style=" padding: 5px;border: 1px solid black;">
-			<p><b>Ўзбекистон ҳудудида ишлаш (таҳсил олиш, хизмат) даврида Давлат сирларига эга бўлган маълумотларга расмий рухсат олинганми? Ўзбекистон ҳудудини тарк этишга тўсиқ бола оладиган шартнома, контракт асосидаги ёки бошқа мажбуриятлари борми?</b></p>
-		</td>
-		<td style="border: 1px solid black; padding:15px;">
-			<?= $model->security; ?>
-		</td>		
-	</tr>
-	<tr>
-		<td class="text-center" style="border: 1px solid black;">
-			<p><b>10</b></p>
-		</td>
-		<td style=" padding: 5px;border: 1px solid black;">
-			<p><b>Суд томонидан тайинланган, аммо бажарилмаган мажбуриятларингиз борми? Судда сизга нисбатан фуқаролик даъвоси мавжудми?</b></p>
-		</td>
-		<td style="border: 1px solid black; padding:15px;">
-			<?= $model->law_court; ?>
-		</td>
-	</tr>
-	<tr>
-		<td class="text-center" style="border: 1px solid black;">
-			<p><b>11</b></p>
-		</td>
-		<td style=" padding: 5px;border: 1px solid black;">
-			<p><b>Сизга нисбатан жиноий иш қўзғатилганми?</b></p>
-		</td>
-		<td style="border: 1px solid black; padding:15px;">
-			<?= $model->criminal; ?>
-		</td>
-	</tr>
-	<tr>
-		<td class="text-center" style="border: 1px solid black;">
-			<p><b>12</b></p>
-		</td>
-		<td style=" padding: 5px;border: 1px solid black;">
-			<p><b>Ҳарбий хизматга яроқлимисиз? 
-			(17 ёшдан 27 ёшгача бўлган эркак жинсига мансуб фуқаролар учун)
-			</b></p>
-		</td>
-		<td style="border: 1px solid black; padding:15px;">
-			<?= $model->army; ?>
-		</td>
-	</tr>		
-</table><br>
-<p style="font-size: 14px;"><b>13.Шу билан бирга, 18 ёшгача бўлган балоғат ёшига етмаган фарзандларимни мен билан бирга хорижга чиқишларига рухсат беришингизни сўрайман.</b></p>
-<table width="800" border="0" cellpadding="0" cellspacing="0" class="anketa-pdf" style="font-size: 15px;" style=" border-collapse: collapse;">	
-	<tr>
 		<th class="text-center" style="border: 1px solid black; padding:15px;">
-			<p>Фамилия, исми, шарифи</p>
+			<p>Дата пос-тупления</p>
 		</th>
 		<th class="text-center" style="border: 1px solid black; padding:15px;">
-			<p>Туғилган вақти ва жойи</p>
-		</th>		
+			<p>Дата ухода</p>
+		</th>
+		<th class="text-center" style="border: 1px solid black; padding:15px;">
+			<p>Должность и точное наименование работы с указанием место работы</p>
+		</th>
 	</tr>
 	<?php
-		$teenagers = $model->teenager;
+		$labors = $model->labor;
 	?>
-	<?php foreach($teenagers as $teenager):?>
+	<?php foreach($labors as $key => $labor):?>
 		<tr>
 			<td style="border: 1px solid black; padding:15px;">
-				<?= $teenager->fio; ?>
+				<?= $labor->begin_date; ?>
 			</td>
 			<td style="border: 1px solid black; padding:15px;">
-				<?= $teenager->birth_date; ?> <?= $teenager->birth_place; ?>
+				<?= $labor->end_date; ?>
 			</td>
+			<td style="border: 1px solid black; padding:15px;">
+				<?= $labor->work; ?>
+			</td>			
 		</tr>
 	<?php endforeach;?>
-</table><br><br><br><br>
-<p style="font-size: 14px;"><b>14. 5 йил давомидаги меҳнат фаолиятим ҳақидаги меҳнат дафтарчамдан кўчирма (жумладан таълим муассасаларида таҳсил олиш ва ҳарбий хизмат даврлари):</b></p>
-<table width="800" border="0" cellpadding="0" cellspacing="0" class="anketa-pdf" style="font-size: 15px;" style=" border-collapse: collapse;">	
-	<tr>
-		<th class="text-center" style="border: 1px solid black; padding:15px;">
-			<p>Қабул қилинган сана</p>
-		</th>
-		<th class="text-center" style="border: 1px solid black; padding:15px;">
-			<p>Кетиш санаси</p>
-		</th>
-		<th class="text-center" style="border: 1px solid black; padding:15px;">
-			<p>Лавозими ҳамда иш жойининг, вазирлик ва муссасанинг аниқ номи</p>
-		</th>
-		<th class="text-center" style="border: 1px solid black; padding:15px;">
-			<p>Корҳона, идора, ташкилотнинг манзили (адрес)</p>
-		</th>		
-	</tr>
-	<?php
-		$employments = $model->employment;
-	?>
-	<?php foreach($employments as $key => $employment):?>
-		<tr>
-			<td style="border: 1px solid black; padding:15px;">
-				<?= $employment->start_date; ?>
-			</td>
-			<td style="border: 1px solid black; padding:15px;">
-				<?= $employment->end_date; ?>
-			</td>
-			<td style="border: 1px solid black; padding:15px;">
-				<?= $employment->position; ?>
-			</td>
-			<td style="border: 1px solid black; padding:15px;">
-				<?= $employment->place; ?>
-			</td>
-		</tr>
-	<?php endforeach;?>
-</table>
-<br><br>	
-<p>Анкетада кўрсатилган маълумотлар паспорт, ҳарбий билет ва мехнат дафтарчаси билан солиштириб текширилди.<br><br>
- "_______"_______________20___ г.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;_______________________________________<br>                   
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;М.П.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Корҳона, муассаса, ташкилотнинг<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ваколатли ҳодими)
-</p><br><br>
-<p style=" font-size: 14px;"><b>15. Яқин қариндошларим ҳақидаги маълумотлар: турмуш ўртоғим, отам, онам, фарзандларим, собиқ турмуш ўртоғим - умумий никоҳдан фарзандлар бўлса (хорижда доимий яшашга тарк этиш учун паспорт расмийлаштириш холида тўлдирилади):</b></p>
+</table><br><br><br>
 <table width="800" border="0" cellpadding="0" cellspacing="0" class="anketa-pdf" style="font-size: 15px;" style=" border-collapse: collapse;">
 	<tr>
+		<td colspan="8" style="padding:15px;" class="text-center">
+			<p style="font-size: 22px;"><b>Сведения о близких родственниках</b></p>
+		</td>
+	</tr>	
+	<tr>
 		<th class="text-center" style="border: 1px solid black; padding:15px;">
-			<p>Фамилия, исми, шарифи</p>
+			<p>Степень родства</p>
 		</th>
 		<th class="text-center" style="border: 1px solid black; padding:15px;">
-			<p>Қариндошлик алоқадорлиги, фуқаролиги</p>
+			<p>Фамилия, имя, отчество</p>
 		</th>
 		<th class="text-center" style="border: 1px solid black; padding:15px;">
-			<p>Туғилган вақти ва жойи</p>
+			<p>Год и место рождения</p>
 		</th>
 		<th class="text-center" style="border: 1px solid black; padding:15px;">
-			<p>Иш жойи, лавозими</p>
+			<p>Гражданство,<br>Национальность,<br>Образования</p>
 		</th>		
 		<th class="text-center" style="border: 1px solid black; padding:15px;">
-			<p>Яшаш жойининг манзили</p>
-		</th>		
+			<p>Семейная положения</p>
+		</th>
+		<th class="text-center" style="border: 1px solid black; padding:15px;">
+			<p>Судимостей имеет/не имеет</p>
+		</th>
+		<th class="text-center" style="border: 1px solid black; padding:15px;">
+			<p>Должность и место работы</p>
+		</th>
+		<th class="text-center" style="border: 1px solid black; padding:15px;">
+			<p>Постоянное место жительство</p>
+		</th>
 	</tr>
 	<?php
-		$relatives = $model->relative;
+		$families = $model->family;
 	?>
-	<?php foreach($relatives as $key => $relative):?>
+	<?php foreach($families as $key => $family):?>
 		<tr>
 			<td style="border: 1px solid black; padding:15px;">
-				<?= $relative->fio; ?>
+				<?= $family->typeRelative->uz_type_relative; ?>
 			</td>
 			<td style="border: 1px solid black; padding:15px;">
-				<?= $relative->relative; ?>
+				<?= $family->fio; ?>
 			</td>
 			<td style="border: 1px solid black; padding:15px;">
-				<?= $relative->birth; ?>
+				<?= $family->birth_date; ?><br><?= $family->birth_place; ?>
+			</td>	
+			<td style="border: 1px solid black; padding:15px;">
+				<?= $family->spCountry->sp_name_uz; ?><br>
+				<?= $family->spNation->sp_name_uz; ?><br>
+				<?= $family->education->uz_type_edu; ?>				
+			</td>			
+			<td style="border: 1px solid black; padding:15px;">
+				<?= $family->spMarital->sp_name_uz; ?>
 			</td>
 			<td style="border: 1px solid black; padding:15px;">
-				<?= $relative->work; ?>
+				<?= $family->court; ?>
 			</td>
 			<td style="border: 1px solid black; padding:15px;">
-				<?= $relative->adres; ?>
+				<?= $family->work; ?>
 			</td>
+			<td style="border: 1px solid black; padding:15px;">
+				<?= $family->address; ?>
+			</td>		
 		</tr>
 	<?php endforeach;?>
-</table><br>	
-<p style=" font-size: 14px;"><b>16. Анкета тўлдириш вактида соҳта маълумотлар бериш хорижга чикишга рухсат олишда рад жавобига сабаб бўлишидан ҳабардорман.<br><br>" ____  " ________________ 20___ г.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;____________________________<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;аризачининг имзоси<br><br>
-	Хужжатлар қабул қилинган сана &nbsp;&nbsp;"______"&nbsp;&nbsp;___________________ 20____ г.&nbsp;&nbsp;&nbsp;____________________________<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ҳодим имзоси<br><br>Рухсат берилган сана  &nbsp;"______"&nbsp;&nbsp;___________________ 20____ г.
-</b></p>
+</table><br><br><br>
+<table  width="800" border="0" cellpadding="0" cellspacing="0" class="anketa-pdf" style="font-size: 15px;">
+	<tr>
+		<td style=" padding: 5px;" class="text-center">
+			<p style="font-size: 18px"><b><?= $model->date;?></b><br><?= $model->city;?></p>
+		</td>
+		<td style=" padding: 5px;" class="text-center">
+			<p style="font-size: 18px"><b><?= $model->surname ?> <?= $model->name ?> <?= $model->mname ?></b></p>
+		</td>			
+	</tr>
+</table>

@@ -74,13 +74,15 @@ class Docs extends \backend\models\Docs
     public function rules()
     {
         return [
-            [['guide', 'surname', 'name', 'mname', 'pre_surname', 'pre_name', 'pre_mname', 'birth_date', 'birth_place', 'nation_id', 'citizenship_id', 'type_id', 'type_place', 'fio_father', 'fio_mother', 'study_name', 'study_place', 'pension_reason', 'pension_org', 'last_cost', 'last_cost_org', 'doc_target', 'living_place', 'tel', 'fax', 'sec_name', 'sec_surname', 'sec_mname', 'sec_birthplace', 'relative', 'sec_livingplace', 'scan_file', 'email', 'division_id', 'comment'], 'required'],
-            [['birth_date', 'type_date', 'study_start_date', 'study_end_date', 'pension_date', 'sec_birthdate'], 'safe'],
-            [['nation_id', 'citizenship_id', 'type_id', 'sec_citizenship_id', 'status_id', 'pre_citizenship_id', 'division_id'], 'integer'],
+           [['surname', 'name', 'mname', 'birth_date', 'birth_place', 'nation_id', 'citizenship_id', 'type_id',  'doc_target', 'living_place', 'tel', 'scan_file', 'division_id', 'email', ], 'required'],
+            [['birth_date', 'type_date', 'study_start_date', 'study_end_date', 'citizenship_id', 'pre_citizenship_id', 'sec_citizenship_id', 'pension_date', 'sec_birthdate'], 'safe'],
+            [['nation_id', 'type_id', 'sec_tel', 'sec_fax', 'status_id', 'division_id' ], 'integer'],
             [['scan_file'], 'string'],
-            [['guide'], 'string', 'max' => 35],
-            [['surname', 'name', 'mname', 'pre_surname', 'pre_name', 'pre_mname', 'fio_father', 'fio_mother', 'study_name', 'pension_reason', 'pension_org', 'last_cost', 'last_cost_org', 'doc_target', 'tel', 'fax', 'sec_name', 'sec_surname', 'sec_mname', 'relative', 'sec_tel', 'sec_fax', 'email'], 'string', 'max' => 50],
+            [['file'], 'file'],
+            [['surname', 'name', 'mname', 'pre_surname', 'pre_name', 'pre_mname', 'fio_father', 'fio_mother', 'study_name', 'pension_reason', 'pension_org', 'last_cost', 'last_cost_org', 'doc_target', 'sec_name', 'sec_surname', 'sec_mname', 'relative', 'email', 'tel', 'fax'], 'string', 'max' => 50],
             [['birth_place', 'type_place', 'study_place', 'living_place', 'sec_birthplace', 'sec_livingplace'], 'string', 'max' => 100],
+            [['guide'], 'string', 'max' => 35],
+
             [['comment'], 'string', 'max' => 200],
             ['verifyCode', 'captcha'], 
 

@@ -31,7 +31,7 @@ use yii\captcha\Captcha;
 <div class="container well well-lg" style="background-color: white;border-radius: 8px!important; color: #18b19c;">
   <h3><b><?= Yii::t('app', 'Xorijga doimiy yashashga chiqish yozuvini rasmiylashtirish (DYa)'); ?></b></h3></br>
   <div class="board">
-    <ul class="nav nav-tabs li4">
+    <ul class="nav nav-tabs li7">
       <div class="liner"></div>
       <li rel-index="0"  class="active">
         <a  id="s1" href="#step-1" class="btn media-links" aria-controls="step-1" role="tab" data-toggle="tab">

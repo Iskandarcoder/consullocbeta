@@ -54,12 +54,16 @@ AppAsset::register($this);
                     <?= Yii::t('app', 'Xorijda doimiy yashash'); ?> <span class="selected">
                     </span>
                     </a>
-                </li>               
-              
-
-                 <li class="classic-menu-dropdown">
+                </li>
+                <li class="classic-menu-dropdown">
                     <a href="<?= Url::to(['citizenship/index']) ?>">
                     <?= Yii::t('app', 'Fuqarolikdan chiqish'); ?> <span class="selected">
+                    </span>
+                    </a>
+                </li>
+                 <li class="classic-menu-dropdown">
+                    <a href="<?= Url::to(['loss/index']) ?>">
+                    <?= Yii::t('app', 'Fuqarolikni yo`qotish'); ?> <span class="selected">
                     </span>
                     </a>
                 </li>
