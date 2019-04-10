@@ -4,6 +4,8 @@ use yii\helpers\Url;
 use backend\models\Pmj;
 use backend\models\Citizenship;
 use backend\models\Docs;
+use backend\models\Loss;
+
 
 // barcha arizalar soni
     $division = Yii::$app->user->identity->dvision_id;
@@ -89,6 +91,8 @@ use backend\models\Docs;
     ->andWhere(['division_id' => $division])
     ->all();
 //end
+     $loss_all = Loss::find()
+    ->all();
 
 ?>
 
@@ -270,15 +274,15 @@ use backend\models\Docs;
                     </div>
                 </div>
 
-                <div class="col-md-2 col-sm-2">
+                <div class="col-md-6 col-sm-6">
                     <div class="portlet light ">
                         <div class="portlet-title">
                             <div class="caption">
                                 <i class="icon-equalizer font-purple-plum hide"></i>
-                                <span class="caption-subject font-blue-steel bold uppercase">Deport</span>
+                                <span class="caption-subject font-blue-steel bold uppercase"><?= Yii::t('app', 'Fuqarolikni yo`qotish'); ?></span>
                             </div>
                             <div class="tools">
-                                <a href="#" class="icon-calendar font-green-sharp"> 2018</a>
+                                <a href="#" class="icon-calendar font-green-sharp"> 2019</a>
                                 <a href="" class="collapse">
                                 </a>
                             </div>
@@ -287,65 +291,9 @@ use backend\models\Docs;
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="sparkline-chart">
-                                        <div class="number" style="font-size: 20px;">789</div>
-                                        <a class="title" href="javascript:;" style="font-size: 15px;">
-                                        Deport qilingan fuqarolar <i class="icon-arrow-right"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-2 col-sm-2">
-                    <div class="portlet light ">
-                        <div class="portlet-title">
-                            <div class="caption">
-                                <i class="icon-equalizer font-purple-plum hide"></i>
-                                <span class="caption-subject font-blue-steel bold uppercase">Qamoqdagi</span>
-                            </div>
-                            <div class="tools">
-                                <a href="#" class="icon-calendar font-green-sharp"> 2018</a>
-                                <a href="" class="collapse">
-                                </a>
-                            </div>
-                        </div>
-                        <div class="portlet-body">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="sparkline-chart">
-                                        <div class="number" style="font-size: 20px;">89</div>
-                                        <a class="title" href="javascript:;" style="font-size: 15px;">
-                                        Qamoqdagi fuqarolar <i class="icon-arrow-right"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-2 col-sm-2">
-                    <div class="portlet light ">
-                        <div class="portlet-title">
-                            <div class="caption">
-                                <i class="icon-equalizer font-purple-plum hide"></i>
-                                <span class="caption-subject font-blue-steel bold uppercase">Hujjatlar</span>
-                            </div>
-                            <div class="tools">
-                                <a href="#" class="icon-calendar font-green-sharp"> 2018</a>
-                                <a href="" class="collapse">
-                                </a>
-                            </div>
-                        </div>
-                        <div class="portlet-body">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="sparkline-chart">
-                                        <div class="number" style="font-size: 20px;">89</div>
-                                        <a class="title" href="javascript:;" style="font-size: 15px;">
-                                        Hujjatlar <i class="icon-arrow-right"></i>
+                                        <div class="number" style="font-size: 20px;"><?php echo count($loss_all);?></div>
+                                        <a class="title" href="<?= Url::to(['loss/index']) ?>" style="font-size: 15px;">
+                                        Barcha arizalar <i class="icon-arrow-right"></i>
                                         </a>
                                     </div>
                                 </div>

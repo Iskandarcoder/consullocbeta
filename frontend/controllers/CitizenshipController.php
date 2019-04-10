@@ -174,6 +174,9 @@ class CitizenshipController extends BaseController
             $model->photo3 = UploadedFile::getInstance($model,'photo3');
             $model->photo4 = UploadedFile::getInstance($model,'photo4');
 
+            $usluga = Usluga::find()->where(['id'=>5])->all();
+            $model->p_guid = $model->p_division.$model->p_guid.$usluga['0']['number'];
+
 
             if ($model->file) {
             $imageName=Yii::$app->getSecurity()->generateRandomString().'.'.$model->file->extension;

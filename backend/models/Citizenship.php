@@ -136,7 +136,7 @@ class Citizenship extends \yii\db\ActiveRecord
         ];
     }
 
-    public function setRandomString($length = 32)
+    public function setRandomString($length = 25)
     {
         $characters = '123456789ABCDEFGHJKLMNPQRSTUVWXYZ';
         $charactersLength = strlen($characters);

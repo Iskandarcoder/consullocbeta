@@ -128,7 +128,7 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-3 col-md-offset-1-and-half">
+      <div class="col-sm-3">
         <a href="<?= Url::to(['/citizenship/create'])?>">
           <button type="button" class="btn btn-labeled btn-lg">
             <div class="btn-label">
@@ -167,6 +167,21 @@
             <div class="overlay">
               <div class="text">
                 <?= Yii::t('app', 'Apostil qo`yish va<br/>hujjatlarni legallashtirish'); ?>
+              </div>
+            </div>
+          </button>
+        </a>
+      </div>
+      <div class="col-sm-3">
+        <a href="<?= Url::to(['/loss/create'])?>">
+          <button type="button" class="btn btn-labeled btn-lg">
+            <div class="btn-label">
+              <i class="fa fa-4x fa-user-times"></i>
+            </div></br>
+            <b><?= Yii::t('app', 'Fuqarolikni</br>yo`qotish'); ?></b>
+            <div class="overlay">
+              <div class="text">
+                <?= Yii::t('app', 'Fuqarolikni</br>yo`qotish'); ?>
               </div>
             </div>
           </button>

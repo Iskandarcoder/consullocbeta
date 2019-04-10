@@ -171,6 +171,9 @@ class PmjController extends BaseController
             $model->file2 = UploadedFile::getInstance($model,'file2');
             $model->file3 = UploadedFile::getInstance($model,'file3');
 
+            $usluga = Usluga::find()->where(['id'=>6])->all();
+            $model->p_guid = $model->p_division.$model->p_guid.$usluga['0']['number'];
+
             if ($model->file) {
             $imageName=Yii::$app->getSecurity()->generateRandomString().'.'.$model->file->extension;
             $upload_path = Yii::getAlias('@backend/web/uploads/').$imageName;
