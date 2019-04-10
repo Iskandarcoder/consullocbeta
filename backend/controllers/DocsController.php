@@ -147,7 +147,7 @@ class DocsController extends BaseController
                 ->setSubject($subject)
                 ->setTextBody('Sizning arizangizga rad javobi berildi.
 -----------------------------------------------------------------------------------------------
-Ваше заявление отклонено')
+Ваше заявление отклонено.')
                 ->send();
             }elseif($model->status_id == '5'){
                 $from='infoembassyuz@gmail.com';
@@ -206,18 +206,20 @@ class DocsController extends BaseController
         ]);
     }
 
-     public function actionProcess()
+
+         public function actionProcess($Docstatus)
     {
         $searchModel = new DocsSearch();
+        if(Yii::$app->user->identity->role_id != '1'){
 
-        $params = Yii::$app->request->queryParams;
-        $division = Yii::$app->user->identity->dvision_id;
+            $params = Yii::$app->request->queryParams;
+            $division = Yii::$app->user->identity->dvision_id;
 
-        $params['DocsSearch']['division_id'] = $division;
-        $params['DocsSearch']['status_id'] = 5;
+            $params['DocsSearch']['division_id'] = $division;           
+            $params['DocsSearch']['docsstatus'] = $docsStatus;           
 
-        $dataProvider = $searchModel->search($params);
-
+            $dataProvider = $searchModel->search($params);
+        }
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('process', [
@@ -225,6 +227,28 @@ class DocsController extends BaseController
             'dataProvider' => $dataProvider,
         ]);
     }
+
+
+
+    //  public function actionProcess()
+    // {
+    //     $searchModel = new DocsSearch();
+
+    //     $params = Yii::$app->request->queryParams;
+    //     $division = Yii::$app->user->identity->dvision_id;
+
+    //     $params['DocsSearch']['division_id'] = $division;
+    //     $params['DocsSearch']['status_id'] = 5;
+
+    //     $dataProvider = $searchModel->search($params);
+
+    //     $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+    //     return $this->render('process', [
+    //         'searchModel' => $searchModel,
+    //         'dataProvider' => $dataProvider,
+    //     ]);
+    // }
 
          public function actionRejected()
     {

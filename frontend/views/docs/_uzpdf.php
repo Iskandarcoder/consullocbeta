@@ -76,7 +76,7 @@
 <table  width="800" border="0" cellpadding="0" cellspacing="0" class="anketa-pdf" style="font-size: 15px;">
 	<tr>
 		<td style=" padding: 5px;" class="text-center">
-			<p style="font-size: 20px"><?= $model->spDivision->sp_name_uz; ?></p>
+			<p style="font-size: 20px"><?= $model['spDivision']['sp_name_uz']; ?></p>
 		</td>		
 	</tr>
 </table>
@@ -112,12 +112,12 @@
 		<tr>
 			<td style="border: 1px solid black; padding:5px; text-align: center;">3</td>
 			<td style="border: 1px solid black; padding:5px;">Shaxsning fuqaroligi<br>(agar fuqarolik o`zgartirilgan bo`lsa, qayd eting)</td>
-			<td style="border: 1px solid black; padding:5px;"><?=$model->citizenship->sp_name_uz;?> <br> <?=$model->citizenship2->sp_name_uz;?></td>
+			<td style="border: 1px solid black; padding:5px;"><?=$model['citizenship']['sp_name_uz'];?> <br> <?=$model['citizenship2']['sp_name_uz'];?></td>
 		</tr>
 		<tr>
 			<td style="border: 1px solid black; padding:5px; text-align: center;">4</td>
 			<td style="border: 1px solid black; padding:5px;">Millati</td>
-			<td style="border: 1px solid black; padding:5px;"><?=$model->nation->sp_name_uz;?></td>
+			<td style="border: 1px solid black; padding:5px;"><?=$model['nation']['sp_name_uz'];?></td>
 		</tr>
 		<tr>
 			<td style="border: 1px solid black; padding:5px; text-align: center;">5</td>
@@ -127,7 +127,7 @@
 			- agar nafaqa to`g`risidagi hujjat talab qilinayotgan bo`lsa,<br> qachon, nima uchun va qaysi tashkilot nafaqani ajratganligi<br> haqida ma'lumot bering, qaysi tashkilot qachon oxirgi<br> to`lovni bajargan. 
 			</td>
 			<td style="border: 1px solid black; padding:5px;">
-				<?=$model->spDoctypeIstreb->sp_name_uz;?>:<br>
+				<?=$model['spDoctypeIstreb']['sp_name_uz'];?>:<br>
 				<?=$model->type_place;?> <?=$model->type_date;?><br> 
 				<?=$model->fio_father;?><br><?=$model->fio_mother;?> 
 				<?=$model->study_name;?><br><?=$model->study_place;?> <br>
@@ -167,7 +167,7 @@
 		<tr>
 			<td style="border: 1px solid black; padding:5px; text-align: center;">10</td>
 			<td style="border: 1px solid black; padding:5px;">Fuqaroligingiz</td>
-			<td style="border: 1px solid black; padding:5px;"><?=$model->citizenship3->sp_name_uz;?></td>
+			<td style="border: 1px solid black; padding:5px;"><?=$model['citizenship3']['sp_name_uz'];?></td>
 		</tr>
 		<tr>
 			<td style="border: 1px solid black; padding:5px; text-align: center;">11</td>

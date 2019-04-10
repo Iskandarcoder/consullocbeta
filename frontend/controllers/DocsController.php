@@ -11,6 +11,7 @@ use yii\filters\VerbFilter;
 use frontend\components\BaseController;
 use yii\web\UploadedFile;
 use backend\models\Model;
+use backend\models\Usluga;
 
 
 /**
@@ -144,6 +145,10 @@ class DocsController extends BaseController
             $upload_path = Yii::getAlias('@backend/web/uploads/').$imageName;
             $model->file->saveAs( $upload_path);
             $model->scan_file = $imageName;
+
+            $usluga = Usluga::find()->where(['id'=>3])->all();
+            $model->guide = $model->division_id.$model->guide.$usluga['0']['number'];
+
             }
             $model->save();
             return $this->redirect(['export-pdf', 'id' => $model->id]);

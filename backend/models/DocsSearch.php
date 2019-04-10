@@ -41,7 +41,14 @@ class DocsSearch extends Docs
      */
     public function search($params)
     {
-        $query = Docs::find();
+        $this->load($params);
+        $process = $params['docsStatus'];
+        if ($process == 1) {
+            $query = Docs::find()->where(['!=','status_id','1'])->andwhere(['!=','status_id','6'])->andwhere(['!=','status_id','4']);
+        }else{
+            $query = Docs::find();
+        }
+        // $query = Docs::find();
 
         // add conditions that should always apply here
 
@@ -49,7 +56,7 @@ class DocsSearch extends Docs
             'query' => $query,
         ]);
 
-        $this->load($params);
+        // $this->load($params);
 
         if (!$this->validate()) {
             // uncomment the following line if you do not want to return any records when validation fails
@@ -59,6 +66,7 @@ class DocsSearch extends Docs
 
         $query->joinWith('spDoctypeIstreb');
         $query->joinWith('citizenship');
+        $query->joinWith('docsStatus');
 
 
         // grid filtering conditions
@@ -78,6 +86,7 @@ class DocsSearch extends Docs
             ->andFilterWhere(['like', 'name', $this->name])
             ->andFilterWhere(['like', 'sp_countryyii.sp_name_ru', $this->citizenship_id])
             ->andFilterWhere(['like', 'sp_doctype_istreb.sp_name_ru', $this->type_id])
+            ->andFilterWhere(['like', 'docsStatus.name_ru', $this->status_id])
             ->andFilterWhere(['like', 'mname', $this->mname])
             ->andFilterWhere(['like', 'pre_surname', $this->pre_surname])
             ->andFilterWhere(['like', 'pre_name', $this->pre_name])

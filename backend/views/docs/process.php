@@ -12,7 +12,7 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 
     <div class="well well-lg" style="background-color: white;border-radius: 8px!important; color: #18b19c;">
-    <h3><b><?= Yii::t('app', 'Toshkentga yuborilgan arizalar'); ?></b></h3></br>    
+    <h3><b><?= Yii::t('app', 'Jarayondagi arizalar'); ?></b></h3></br>    
     <div class="docs-index">
 
    
@@ -61,7 +61,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'doc_target',
                 'living_place',
                 'tel',
-                'fax',
+                // 'fax',
                 //'sec_name',
                 //'sec_surname',
                 //'sec_mname',
@@ -76,6 +76,11 @@ $this->params['breadcrumbs'][] = $this->title;
                 //'status_id',
                 //'pre_citizenship_id',
                 'email:email',
+                [
+                    'attribute' => 'status_id',
+                    'value' => 'status.name_'.Yii::$app->language,
+                ],
+
                 //'division_id',
                 //'comment',
 

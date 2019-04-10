@@ -66,7 +66,6 @@ class AnketaNew extends \yii\db\ActiveRecord
     /**
      * @inheritdoc
      */
-    
     public static function tableName()
     {
         return 'anketa_new';
@@ -92,7 +91,6 @@ class AnketaNew extends \yii\db\ActiveRecord
             [['p_korpus'], 'string', 'max' => 5],
             [['p_address', 'p_addressout', 'p_reasonfull'], 'string', 'max' => 400],
             [['p_work'], 'string', 'max' => 128],
-            
         ];
     }
 
@@ -155,11 +153,10 @@ class AnketaNew extends \yii\db\ActiveRecord
             'p_datesent' => Yii::t('app', 'P Datesent'),
             'p_status' => Yii::t('app', 'P Status'),
             'p_lan' => Yii::t('app', 'P Lan'),
-            'verifyCode' => 'Verification Code',
         ];
     }
 
-    public function setRandomString($length = 32)
+    public function setRandomString($length = 25)
 
     {
 
@@ -181,7 +178,7 @@ class AnketaNew extends \yii\db\ActiveRecord
 
      public function getCountry()
     {
-        return $this->hasOne(SpCountry::className(), ['sp_id' => 'p_countryb']);
+        return $this->hasOne(SpCountryyii::className(), ['sp_id' => 'p_countryb']);
     }
 
     /**
@@ -189,7 +186,7 @@ class AnketaNew extends \yii\db\ActiveRecord
      */
     public function getRegion()
     {
-        return $this->hasOne(SpRegion::className(), ['sp_id' => 'p_regionb']);
+        return $this->hasOne(SpRegionyii::className(), ['sp_id' => 'p_regionb']);
     }
 
     /**
@@ -197,7 +194,7 @@ class AnketaNew extends \yii\db\ActiveRecord
      */
     public function getDistrict()
     {
-        return $this->hasOne(SpDistrict::className(), ['sp_id' => 'p_districtb']);
+        return $this->hasOne(SpDistrictyii::className(), ['sp_id' => 'p_districtb']);
     }
 
     public function getInRelative()
@@ -207,27 +204,27 @@ class AnketaNew extends \yii\db\ActiveRecord
 
     public function getDivision()
     {
-        return $this->hasOne(SpDivision::className(), ['sp_id' => 'p_division']);
+        return $this->hasOne(SpDivisionyii::className(), ['sp_id' => 'p_division']);
     }
      public function getStreet()
     {
-        return $this->hasOne(SpStreet::className(), ['sp_id' => 'p_street']);
+        return $this->hasOne(SpStreetyii::className(), ['sp_id' => 'p_street']);
     }
 
     public function getNation()
     {
-        return $this->hasOne(SpNation::className(), ['sp_id' => 'p_nation']);
+        return $this->hasOne(SpNationyii::className(), ['sp_id' => 'p_nation']);
     }
     public function getDoctype()
     {
-        return $this->hasOne(SpDoctype::className(), ['sp_id' => 'p_doctypeb']);
+        return $this->hasOne(SpDoctypeyii::className(), ['sp_id' => 'p_doctypeb']);
     }
     public function getSertcause()
     {
-        return $this->hasOne(SpSertcause::className(), ['sp_id' => 'p_cause']);
+        return $this->hasOne(SpSertcauseyii::className(), ['sp_id' => 'p_cause']);
     }
     public function getReasonb()
     {
-        return $this->hasOne(SpReasonb::className(), ['sp_id' => 'p_reasonb']);
+        return $this->hasOne(SpReasonbyii::className(), ['sp_id' => 'p_reasonb']);
     }
 }

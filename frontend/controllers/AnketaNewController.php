@@ -17,6 +17,7 @@ use yii\web\UploadedFile;
 use backend\models\Model;
 use backend\models\SpStreetyii;
 use backend\models\InRelative;
+use backend\models\Usluga;
 
 
 /**
@@ -132,12 +133,12 @@ public function actionPdf($id)
      * @param integer $id
      * @return mixed
      */
-    public function actionView($id)
-    {
-        return $this->render('view', [
-            'model' => $this->findModel($id),
-        ]);
-    }
+    // public function actionView($id)
+    // {
+    //     return $this->render('view', [
+    //         'model' => $this->findModel($id),
+    //     ]);
+    // }
 
     /**
      * Creates a new AnketaNew model.
@@ -162,13 +163,16 @@ public function actionPdf($id)
             $model->p_country = '182';
             $model->p_certiftype = '2';
             $model->p_status = '0';
-
+            $model->p_birthcomp = '1';
+            
+            $usluga = Usluga::find()->where(['id'=>1])->all();
+            $model->p_guid = $model->p_division.$model->p_guid.$usluga['0']['number'];
 
             if ($model->save()) {
                 $valid = true;
                 foreach ($modelInrelative as $key => $modelI) {
                     $modelI->sert_id = $model->p_id;
-                    //$valid = $valid && $modelI->validate();
+                    $valid = $valid && $modelI->validate();
                 }
 
                
@@ -205,9 +209,9 @@ public function actionPdf($id)
                 $transaction = \Yii::$app->db->beginTransaction();
 
                 try {
-                    if ($flag = $modelCustomer->save(false)) {
+                    if ($flag = $model->save(false)) {
                         foreach ($modelInrelative as $modelin) {
-                            $modelAddress->customer_id = $modelCustomer->p_id;
+                            $modelin->sert_id = $model->p_id;
                             if (! ($flag = $modelin->save(false))) {
                                 $transaction->rollBack();
                                 break;
@@ -219,7 +223,7 @@ public function actionPdf($id)
 
                     if ($flag) {
                         $transaction->commit();
-                        return $this->redirect(['view', 'id' => $modelCustomer->p_id]);
+                        return $this->redirect(['view', 'id' => $model->p_id]);
                     }
                 } catch (Exception $e) {
                     $transaction->rollBack();
@@ -241,18 +245,18 @@ public function actionPdf($id)
      * @param integer $id
      * @return mixed
      */
-    public function actionUpdate($id)
-    {
-        $model = $this->findModel($id);
+    // public function actionUpdate($id)
+    // {
+    //     $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->p_id]);
-        } else {
-            return $this->render('update', [
-                'model' => $model,
-            ]);
-        }
-    }
+    //     if ($model->load(Yii::$app->request->post()) && $model->save()) {
+    //         return $this->redirect(['view', 'id' => $model->p_id]);
+    //     } else {
+    //         return $this->render('update', [
+    //             'model' => $model,
+    //         ]);
+    //     }
+    // }
 
     /**
      * Deletes an existing AnketaNew model.
@@ -260,12 +264,12 @@ public function actionPdf($id)
      * @param integer $id
      * @return mixed
      */
-    public function actionDelete($id)
-    {
-        $this->findModel($id)->delete();
+    // public function actionDelete($id)
+    // {
+    //     $this->findModel($id)->delete();
 
-        return $this->redirect(['index']);
-    }
+    //     return $this->redirect(['index']);
+    // }
 
     /**
      * Finds the AnketaNew model based on its primary key value.
