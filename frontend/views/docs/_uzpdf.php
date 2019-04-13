@@ -42,7 +42,7 @@
 
 <table width="800" border="0" cellpadding="0" cellspacing="0" class="anketa-pdf" style="font-size: 15px;">
 	<tr>
-		<td style=" padding: 5px;">
+		<td style="padding: 5px;">
 			<p style="text-align: left;">
 				<?php
 					$image = $generator->render_image('code128', $model->guide, [
@@ -75,7 +75,7 @@
 
 <table  width="800" border="0" cellpadding="0" cellspacing="0" class="anketa-pdf" style="font-size: 15px;">
 	<tr>
-		<td style=" padding: 5px;" class="text-center">
+		<td style="padding: 5px;" class="text-center">
 			<p style="font-size: 20px"><?= $model['spDivision']['sp_name_uz']; ?></p>
 		</td>		
 	</tr>
@@ -183,8 +183,8 @@
 		</tr>
 
 		<tr>
-			<td style="padding:5px; vertical-align: 5px; text-align: center;"></td>
-			<td style="padding:5px; vertical-align: 5px;"><i><br>So`rovchi shaxs imzosi (F.I.SH.). Sana.</i></td>
+			<td style="padding:5px; text-align: center;"></td>
+			<td style="padding:5px;"><i><br>So`rovchi shaxs imzosi (F.I.SH.). Sana.</i></td>
 			<td style="padding:5px; text-align: right;"><i><br>Konsul imzosi (F.I.SH.). Sana.</i></td>
 		</tr>
 		

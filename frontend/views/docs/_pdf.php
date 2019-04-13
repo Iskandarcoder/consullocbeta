@@ -178,8 +178,8 @@
 		</tr>
 
 		<tr>
-			<td style="padding:5px; vertical-align: 5px; text-align: center;"></td>
-			<td style="padding:5px; vertical-align: 5px;"><i><br>Подпись заявителя (Ф.И.О.). Дата.</i></td>
+			<td style="padding:5px; text-align: center;"></td>
+			<td style="padding:5px;"><i><br>Подпись заявителя (Ф.И.О.). Дата.</i></td>
 			<td style="padding:5px; text-align: right;"><i><br>Подпись консула (Ф.И.О.). Дата.</i></td>
 		</tr>
 		

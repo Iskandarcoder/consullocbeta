@@ -144,7 +144,7 @@
         </a>
       </div>
       <div class="col-sm-3">
-        <a href="?action=ngraj">
+        <a href="<?= Url::to(['/ngraj/index'])?>">
           <button type="button" class="btn btn-labeled btn-lg">
             <div class="btn-label">
               <i class="fa fa-4x fa-user-secret"></i>
